@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ServeLink — Find Any Service You Need</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --brand: #C2410C;
+      --brand-light: #FFF7ED;
+      --brand-dark: #7C2D12;
+      --ink: #1C1917;
+      --muted: #78716C;
+      --soft: #F5F5F4;
+      --white: #FFFFFF;
+      --border: #E7E5E4;
+      --radius: 14px;
+      --radius-sm: 8px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--ink); line-height: 1.6; }
+
+    .page { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── NAV ── */
+    nav {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 18px 32px; border-bottom: 1px solid var(--border);
+      background: var(--white); position: sticky; top: 0; z-index: 100;
+    }
+    .logo { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 900; color: var(--brand); text-decoration: none; }
+    .logo span { color: var(--ink); }
+    nav ul { list-style: none; display: flex; gap: 28px; }
+    nav ul a { text-decoration: none; color: var(--muted); font-size: 14px; font-weight: 400; transition: color .2s; }
+    nav ul a:hover { color: var(--ink); }
+    .nav-btn {
+      background: var(--brand); color: #fff; border: none;
+      padding: 9px 22px; border-radius: 50px; font-size: 13px; font-weight: 500;
+      cursor: pointer; font-family: 'DM Sans', sans-serif; transition: background .2s;
+    }
+    .nav-btn:hover { background: var(--brand-dark); }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 72px 0 56px;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 48px; align-items: center;
+    }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: var(--brand-light); color: var(--brand);
+      font-size: 12px; font-weight: 500; padding: 5px 13px;
+      border-radius: 50px; margin-bottom: 20px;
+    }
+    .hero-tag::before { content: ''; width: 7px; height: 7px; background: var(--brand); border-radius: 50%; }
+    h1 { font-family: 'Playfair Display', serif; font-size: 54px; line-height: 1.1; font-weight: 900; margin-bottom: 18px; }
+    h1 em { color: var(--brand); font-style: normal; }
+    .hero-sub { color: var(--muted); font-size: 16px; line-height: 1.7; margin-bottom: 28px; max-width: 440px; }
+    .search-bar {
+      display: flex; background: var(--soft); border-radius: 50px;
+      padding: 6px 6px 6px 18px; gap: 8px; align-items: center; max-width: 460px;
+    }
+    .search-bar input {
+      flex: 1; border: none; background: transparent; font-size: 14px;
+      font-family: 'DM Sans', sans-serif; outline: none; color: var(--ink);
+    }
+    .search-bar input::placeholder { color: #A8A29E; }
+    .search-bar button {
+      background: var(--brand); color: #fff; border: none;
+      padding: 9px 22px; border-radius: 50px; font-size: 13px; font-weight: 500;
+      cursor: pointer; font-family: 'DM Sans', sans-serif; transition: background .2s;
+    }
+    .search-bar button:hover { background: var(--brand-dark); }
+    .hero-stats { display: flex; gap: 28px; margin-top: 28px; }
+    .stat { font-size: 13px; color: var(--muted); }
+    .stat strong { display: block; font-size: 20px; font-weight: 500; color: var(--ink); }
+
+    /* Hero visual collage */
+    .hero-visual { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .hv-card { border-radius: var(--radius); overflow: hidden; position: relative; height: 170px; cursor: pointer; }
+    .hv-card:first-child { grid-column: 1 / -1; height: 200px; }
+    .hv-card img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
+    .hv-card:hover img { transform: scale(1.05); }
+    .hv-label {
+      position: absolute; bottom: 10px; left: 10px;
+      background: rgba(28,25,23,0.72); backdrop-filter: blur(4px);
+      color: #fff; font-size: 12px; font-weight: 500; padding: 4px 11px; border-radius: 50px;
+    }
+
+    /* ── CATEGORIES ── */
+    .categories { padding: 64px 0; }
+    .section-head { text-align: center; margin-bottom: 40px; }
+    .section-head h2 { font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 700; margin-bottom: 8px; }
+    .section-head p { color: var(--muted); font-size: 15px; }
+    .cat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 18px; }
+    .cat-card {
+      border-radius: var(--radius); overflow: hidden; cursor: pointer;
+      position: relative; height: 250px;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .cat-card:hover { transform: translateY(-5px); box-shadow: 0 14px 36px rgba(0,0,0,0.16); }
+    .cat-img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; display: block; }
+    .cat-card:hover .cat-img { transform: scale(1.07); }
+    .cat-overlay {
+      position: absolute; bottom: 0; left: 0; right: 0; padding: 16px;
+      background: linear-gradient(to top, rgba(15,10,5,0.85) 0%, transparent 100%);
+    }
+    .cat-name { color: #fff; font-size: 15px; font-weight: 500; }
+    .cat-count { color: rgba(255,255,255,0.7); font-size: 12px; margin-top: 2px; }
+
+    /* ── HOW IT WORKS ── */
+    .hiw { padding: 64px 0; background: var(--soft); }
+    .hiw-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 780px; margin: 0 auto; }
+    .hiw-step { text-align: center; padding: 28px 20px; }
+    .hiw-num {
+      width: 46px; height: 46px; border-radius: 50%; background: var(--brand); color: #fff;
+      font-size: 18px; font-weight: 700; display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px;
+    }
+    .hiw-step h3 { font-size: 15px; font-weight: 500; margin-bottom: 7px; }
+    .hiw-step p { font-size: 13px; color: var(--muted); line-height: 1.65; }
+
+    /* ── CTA BANNER ── */
+    .cta { padding: 72px 0; text-align: center; background: var(--ink); }
+    .cta h2 { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 700; color: #fff; margin-bottom: 12px; }
+    .cta p { color: #A8A29E; font-size: 15px; margin-bottom: 30px; }
+    .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn-white {
+      background: #fff; color: var(--ink); border: none;
+      padding: 13px 30px; border-radius: 50px; font-size: 14px; font-weight: 500;
+      cursor: pointer; font-family: 'DM Sans', sans-serif; transition: opacity .2s;
+    }
+    .btn-white:hover { opacity: .88; }
+    .btn-outline {
+      background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.3);
+      padding: 13px 30px; border-radius: 50px; font-size: 14px; font-weight: 500;
+      cursor: pointer; font-family: 'DM Sans', sans-serif; transition: border-color .2s;
+    }
+    .btn-outline:hover { border-color: rgba(255,255,255,0.65); }
+
+    /* ── FOOTER ── */
+    footer { padding: 24px; text-align: center; color: var(--muted); font-size: 13px; border-top: 1px solid var(--border); }
+
+    /* ── PROVIDER VIEW ── */
+    .provider-section { display: none; padding: 48px 0; animation: fadeIn .3s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .back-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--soft); border: none; border-radius: 50px;
+      padding: 9px 18px; font-size: 13px; font-weight: 500;
+      cursor: pointer; font-family: 'DM Sans', sans-serif; color: var(--ink);
+      margin-bottom: 30px; transition: background .2s;
+    }
+    .back-btn:hover { background: var(--border); }
+    .prov-head { margin-bottom: 30px; }
+    .prov-head h2 { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; }
+    .prov-head p { color: var(--muted); font-size: 14px; margin-top: 5px; }
+    .prov-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 18px; }
+    .prov-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 20px;
+      cursor: pointer; transition: box-shadow .2s, transform .2s;
+    }
+    .prov-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.1); transform: translateY(-3px); }
+    .prov-avatar {
+      width: 58px; height: 58px; border-radius: 50%; object-fit: cover;
+      margin-bottom: 13px; border: 3px solid var(--brand-light); display: block;
+    }
+    .prov-name { font-size: 15px; font-weight: 500; margin-bottom: 3px; }
+    .prov-title { font-size: 12px; color: var(--brand); font-weight: 500; margin-bottom: 7px; }
+    .prov-desc { font-size: 13px; color: var(--muted); line-height: 1.55; }
+    .prov-stars { font-size: 13px; color: #D97706; margin-top: 10px; }
+    .prov-badge {
+      display: inline-block; background: var(--brand-light); color: var(--brand);
+      font-size: 11px; padding: 3px 9px; border-radius: 50px; margin-top: 7px; font-weight: 500;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; gap: 32px; padding: 48px 0 40px; }
+      .hero-visual { display: none; }
+      h1 { font-size: 38px; }
+      .hiw-steps { grid-template-columns: 1fr; }
+      nav ul { display: none; }
+      .section-head h2 { font-size: 28px; }
+      .cta h2 { font-size: 30px; }
+    }
+    @media (max-width: 480px) {
+      h1 { font-size: 30px; }
+      .hero-stats { flex-wrap: wrap; gap: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAVIGATION ── -->
+<nav>
+  <a href="#" class="logo">Serve<span>Link</span></a>
+  <ul>
+    <li><a href="#categories">Browse Services</a></li>
+    <li><a href="#how-it-works">How it Works</a></li>
+    <li><a href="#cta">List Your Service</a></li>
+  </ul>
+  <button class="nav-btn">Sign Up Free</button>
+</nav>
+
+<!-- ── HOME VIEW ── -->
+<div id="home-view">
+
+  <!-- HERO -->
+  <section>
+    <div class="page">
+      <div class="hero">
+        <div>
+          <div class="hero-tag">South Africa's Service Marketplace</div>
+          <h1>Find Any <em>Service</em> You Need, Nearby</h1>
+          <p class="hero-sub">From nail technicians to plumbers, hairstylists to tutors — connect with trusted local professionals in minutes.</p>
+          <div class="search-bar">
+            <input type="text" placeholder="Search e.g. nail tech, plumber, salon..."/>
+            <button>Search</button>
+          </div>
+          <div class="hero-stats">
+            <div class="stat"><strong>1,200+</strong>Providers listed</div>
+            <div class="stat"><strong>40+</strong>Service categories</div>
+            <div class="stat"><strong>4.8★</strong>Average rating</div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hv-card">
+            <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=700&q=80" alt="nail tech"/>
+            <div class="hv-label">Nail Tech</div>
+          </div>
+          <div class="hv-card">
+            <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=400&q=80" alt="barber"/>
+            <div class="hv-label">Barber</div>
+          </div>
+          <div class="hv-card">
+            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80" alt="plumber"/>
+            <div class="hv-label">Plumber</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <section class="categories" id="categories">
+    <div class="page">
+      <div class="section-head">
+        <h2>Browse by Category</h2>
+        <p>Click a category to explore available professionals</p>
+      </div>
+      <div class="cat-grid" id="cat-grid">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="hiw" id="how-it-works">
+    <div class="page">
+      <div class="section-head">
+        <h2>How ServeLink Works</h2>
+        <p>Three easy steps to get the help you need</p>
+      </div>
+      <div class="hiw-steps">
+        <div class="hiw-step">
+          <div class="hiw-num">1</div>
+          <h3>Browse or Search</h3>
+          <p>Find the type of service you need from our growing list of categories.</p>
+        </div>
+        <div class="hiw-step">
+          <div class="hiw-num">2</div>
+          <h3>View Profiles</h3>
+          <p>Compare providers by ratings, descriptions, and location.</p>
+        </div>
+        <div class="hiw-step">
+          <div class="hiw-num">3</div>
+          <h3>Connect &amp; Book</h3>
+          <p>Reach out directly and arrange your appointment with ease.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" id="cta">
+    <div class="page">
+      <h2>Are you a service provider?</h2>
+      <p>Join hundreds of professionals already growing their client base on ServeLink</p>
+      <div class="cta-btns">
+        <button class="btn-white">List Your Services</button>
+        <button class="btn-outline">Learn More</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>© 2026 ServeLink · Built for local service communities</footer>
+</div>
+
+<!-- ── PROVIDER VIEW ── -->
+<div id="provider-view" class="provider-section">
+  <div class="page">
+    <button class="back-btn" onclick="goBack()">← Back to Categories</button>
+    <div class="prov-head">
+      <h2 id="prov-title"></h2>
+      <p id="prov-subtitle"></p>
+    </div>
+    <div class="prov-grid" id="prov-grid">
+      <!-- Populated by JS -->
+    </div>
+  </div>
+</div>
+
+<script>
+  /* ── DATA ── */
+  const categories = [
+    {
+      name: "Nail Technicians", count: 87,
+      img: "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=500&q=80",
+      providers: [
+        { name: "Zanele Dlamini",   avatar: "https://randomuser.me/api/portraits/women/44.jpg", title: "Nail Art Specialist",   desc: "Gel, acrylic, and nail art designs. Known for intricate patterns and long-lasting finishes.", stars: "★★★★★", badge: "Top Rated" },
+        { name: "Precious Khumalo", avatar: "https://randomuser.me/api/portraits/women/68.jpg", title: "Nail Technician",       desc: "5+ years experience. Specialises in natural nail care, gel overlays, and French tips.", stars: "★★★★☆", badge: "" },
+        { name: "Thandi Mokoena",   avatar: "https://randomuser.me/api/portraits/women/33.jpg", title: "Acrylic & Gel Expert",  desc: "Full sets, fills, and nail extensions. Home visits available in the Johannesburg area.", stars: "★★★★★", badge: "Home Visits" },
+        { name: "Nomvula Sithole",  avatar: "https://randomuser.me/api/portraits/women/17.jpg", title: "Nail Artist",           desc: "Creative nail designs, chrome powders, and 3D nail art. Instagram-worthy results.", stars: "★★★★☆", badge: "" },
+      ]
+    },
+    {
+      name: "Hair Salons", count: 124,
+      img: "https://images.unsplash.com/photo-1560869713-7d0a29430803?w=500&q=80",
+      providers: [
+        { name: "Lebo Mahlangu",    avatar: "https://randomuser.me/api/portraits/women/55.jpg", title: "Senior Stylist",       desc: "Specialises in relaxers, braids, and natural hair care. 10 years in the industry.", stars: "★★★★★", badge: "Top Rated" },
+        { name: "Sandra Pretorius", avatar: "https://randomuser.me/api/portraits/women/22.jpg", title: "Colourist & Stylist",  desc: "Balayage, highlights, and colour corrections. Trained in Cape Town and Johannesburg.", stars: "★★★★☆", badge: "" },
+        { name: "Ayanda Ntuli",     avatar: "https://randomuser.me/api/portraits/women/38.jpg", title: "Natural Hair Expert",  desc: "Locs, twists, and afro styling. Passionate about healthy natural hair journeys.", stars: "★★★★★", badge: "New" },
+      ]
+    },
+    {
+      name: "Plumbers", count: 63,
+      img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=80",
+      providers: [
+        { name: "Johan van der Berg", avatar: "https://randomuser.me/api/portraits/men/42.jpg", title: "Certified Plumber",    desc: "Burst pipes, geyser repairs, drainage. 15 years commercial and residential experience.", stars: "★★★★★", badge: "Verified" },
+        { name: "Sipho Ndlovu",       avatar: "https://randomuser.me/api/portraits/men/19.jpg", title: "Plumbing Contractor",  desc: "Full installations and emergency call-outs. Available on weekends.", stars: "★★★★☆", badge: "" },
+        { name: "Riaan Botha",        avatar: "https://randomuser.me/api/portraits/men/65.jpg", title: "Geyser Specialist",    desc: "Solar geysers, heat pumps, and conventional geyser installation and repairs.", stars: "★★★★★", badge: "Specialist" },
+      ]
+    },
+    {
+      name: "Electricians", count: 41,
+      img: "https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=500&q=80",
+      providers: [
+        { name: "Mthokozisi Zulu",   avatar: "https://randomuser.me/api/portraits/men/30.jpg", title: "Master Electrician",      desc: "COC certificates, DB boards, solar installations. Fully qualified and insured.", stars: "★★★★★", badge: "Verified" },
+        { name: "Chris Engelbrecht", avatar: "https://randomuser.me/api/portraits/men/11.jpg", title: "Residential Electrician", desc: "Fault finding, rewiring, and new installations. Fast response times.", stars: "★★★★☆", badge: "" },
+      ]
+    },
+    {
+      name: "Tutors", count: 98,
+      img: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=500&q=80",
+      providers: [
+        { name: "Dr. Fatima Essa",   avatar: "https://randomuser.me/api/portraits/women/8.jpg",  title: "Maths & Science Tutor", desc: "PhD in Mathematics. Matric through university level tutoring. 98% pass rate.", stars: "★★★★★", badge: "Top Rated" },
+        { name: "Blessing Okonkwo", avatar: "https://randomuser.me/api/portraits/women/72.jpg", title: "English & Languages",    desc: "First language tutoring for English, Zulu, and Afrikaans. Grade 1–12.", stars: "★★★★★", badge: "" },
+        { name: "Kyle Jacobs",      avatar: "https://randomuser.me/api/portraits/men/77.jpg",   title: "Physics & Chemistry",   desc: "Ex-Wits lecturer. Specialises in exam preparation and concept mastery.", stars: "★★★★☆", badge: "" },
+      ]
+    },
+    {
+      name: "Cleaning Services", count: 79,
+      img: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=500&q=80",
+      providers: [
+        { name: "Grace Matlala", avatar: "https://randomuser.me/api/portraits/women/61.jpg", title: "Home Cleaner",           desc: "Thorough domestic cleaning, ironing, and laundry. References available. Weekly bookings.", stars: "★★★★★", badge: "Reliable" },
+        { name: "Ntombi Cele",   avatar: "https://randomuser.me/api/portraits/women/48.jpg", title: "Deep Clean Specialist",  desc: "Move-in/move-out cleaning, oven deep clean, and carpet steam cleaning.", stars: "★★★★☆", badge: "" },
+      ]
+    },
+    {
+      name: "Makeup Artists", count: 55,
+      img: "https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=500&q=80",
+      providers: [
+        { name: "Nadia Rossouw",  avatar: "https://randomuser.me/api/portraits/women/14.jpg", title: "Bridal Makeup Artist",  desc: "Wedding and event makeup. Airbrush and traditional. Travel to your venue.", stars: "★★★★★", badge: "Bridal" },
+        { name: "Boipelo Sefako", avatar: "https://randomuser.me/api/portraits/women/29.jpg", title: "Editorial & Events",    desc: "High fashion, matric farewell, and TV/film makeup. Portfolio available on request.", stars: "★★★★★", badge: "Top Rated" },
+      ]
+    },
+    {
+      name: "Photographers", count: 44,
+      img: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=500&q=80",
+      providers: [
+        { name: "Marco de Villiers", avatar: "https://randomuser.me/api/portraits/men/52.jpg",  title: "Wedding Photographer",  desc: "Capturing timeless moments. Full-day coverage, drone shots, and edited albums.", stars: "★★★★★", badge: "Featured" },
+        { name: "Amara Diallo",      avatar: "https://randomuser.me/api/portraits/women/5.jpg", title: "Portrait & Family",     desc: "Family portraits, headshots, and maternity shoots. Studio and outdoor options.", stars: "★★★★☆", badge: "" },
+      ]
+    },
+  ];
+
+  /* ── RENDER CATEGORIES ── */
+  function renderCategories() {
+    const grid = document.getElementById('cat-grid');
+    grid.innerHTML = categories.map((c, i) => `
+      <div class="cat-card" onclick="showProviders(${i})" role="button" tabindex="0" aria-label="Browse ${c.name}">
+        <img class="cat-img" src="${c.img}" alt="${c.name}" loading="lazy"/>
+        <div class="cat-overlay">
+          <div class="cat-name">${c.name}</div>
+          <div class="cat-count">${c.count} providers</div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  /* ── SHOW PROVIDER LIST ── */
+  function showProviders(index) {
+    const cat = categories[index];
+    document.getElementById('home-view').style.display = 'none';
+    const pv = document.getElementById('provider-view');
+    pv.style.display = 'block';
+    document.getElementById('prov-title').textContent = cat.name;
+    document.getElementById('prov-subtitle').textContent = `${cat.count} professionals available in your area`;
+    const grid = document.getElementById('prov-grid');
+    grid.innerHTML = cat.providers.map(p => `
+      <div class="prov-card">
+        <img class="prov-avatar" src="${p.avatar}" alt="${p.name}" loading="lazy"/>
+        <div class="prov-name">${p.name}</div>
+        <div class="prov-title">${p.title}</div>
+        <div class="prov-desc">${p.desc}</div>
+        <div class="prov-stars">${p.stars}</div>
+        ${p.badge ? `<div class="prov-badge">${p.badge}</div>` : ''}
+      </div>
+    `).join('');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  /* ── GO BACK ── */
+  function goBack() {
+    document.getElementById('provider-view').style.display = 'none';
+    document.getElementById('home-view').style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  /* ── KEYBOARD SUPPORT FOR CATEGORY CARDS ── */
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' && e.target.classList.contains('cat-card')) {
+      e.target.click();
+    }
+  });
+
+  renderCategories();
+</script>
+</body>
+</html>

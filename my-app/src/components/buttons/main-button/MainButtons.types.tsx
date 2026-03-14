@@ -1,0 +1,3 @@
+interface MainButtonsProps {
+    label ?: string; 
+}
