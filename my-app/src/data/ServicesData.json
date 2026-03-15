@@ -1,0 +1,46 @@
+[
+  {
+    "name": "Nail Technicians",
+    "count": 87,
+    "img": "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=500&q=80",
+    "providers": [
+      {
+        "name": "Zanele Dlamini",
+        "avatar": "https://randomuser.me/api/portraits/women/44.jpg",
+        "title": "Nail Art Specialist",
+        "desc": "Gel, acrylic, and nail art designs.",
+        "stars": "★★★★★",
+        "badge": "Top Rated"
+      },
+      {
+        "name": "Precious Khumalo",
+        "avatar": "https://randomuser.me/api/portraits/women/68.jpg",
+        "title": "Nail Technician",
+        "desc": "5+ years experience.",
+        "stars": "★★★★☆",
+        "badge": ""
+      }
+    ]
+  },
+  {
+    "name": "Hair Salons",
+    "count": 124,
+    "img": "https://images.unsplash.com/photo-1560869713-7d0a29430803?w=500&q=80",
+    "providers": [
+      {
+        "name": "Lebo Mahlangu",
+        "avatar": "https://randomuser.me/api/portraits/women/55.jpg",
+        "title": "Senior Stylist",
+        "desc": "Specialises in relaxers and natural hair care.",
+        "stars": "★★★★★",
+        "badge": "Top Rated"
+      }
+    ]
+  },
+  {
+    "name": "Plumbers",
+    "count": 63,
+    "img": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=80",
+    "providers": []
+  }
+]
