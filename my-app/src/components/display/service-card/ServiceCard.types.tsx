@@ -1,4 +1,4 @@
-export interface Provider {
+export type Provider = {
   name: string
   avatar: string
   title: string
@@ -7,9 +7,14 @@ export interface Provider {
   badge: string
 }
 
-export interface ServiceCardProps {
+export interface ServiceItem {
   name: string
   count: number
   img: string
   providers: Provider[]
+ 
+}
+
+export interface ServiceCardProps {
+   onSelectCategory: (category: ServiceItem) => void
 }

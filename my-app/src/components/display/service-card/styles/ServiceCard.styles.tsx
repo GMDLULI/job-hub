@@ -8,7 +8,7 @@ export const ServiceContainer = styled.div`
 
 `
 export const ServiceCard = styled.div`
-    border-radius: var(--radius); 
+    border-radius: 14px; 
     overflow: hidden; 
     cursor: pointer;
     position: relative; 

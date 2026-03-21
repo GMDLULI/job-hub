@@ -42,5 +42,11 @@
     "count": 63,
     "img": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=80",
     "providers": []
+  },
+   {
+    "name": "Construction",
+    "count": 17,
+    "img": "https://images.pexels.com/photos/32751450/pexels-photo-32751450.jpeg",
+    "providers": []
   }
 ]

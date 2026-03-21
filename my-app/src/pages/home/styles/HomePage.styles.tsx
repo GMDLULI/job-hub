@@ -43,11 +43,21 @@ export const Categories = styled.section`
     padding: 64px 0;
 `
 
+export const SectionHead = styled.div`
+   text-align: center; 
+   margin-bottom: 40px; 
+`
+
 export const SectionHeadP = styled(Text)`
     margin-bottom: 0px;
 `
 
-export const SectionHeadH = styled(Text)`
+export const SectionHeadH = styled.h2`
+    font-family: "Playfair Display", serif;
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #3e3c3c;
     font-size: 38px;
     margin-bottom: 8px
 `
@@ -76,7 +86,7 @@ export const HIWNum = styled.div`
     width: 46px; 
     height: 46px; 
     border-radius: 50%; 
-    background: #FFF7ED; 
+    background: #f1e1cd; 
     color: #fff;
     font-size: 18px; 
     font-weight: 700; 

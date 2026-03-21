@@ -9,6 +9,16 @@ import type { ProviderProps } from '../providers/Providers.types'
 const HomePage = () => {
   const [selectedCategory, setSelectedCategory] = useState<ProviderProps | null>(null)
 
+
+  if (selectedCategory) {
+    return (
+      <ProviderView
+        category={selectedCategory}
+        goBack={() => setSelectedCategory(null)}
+      />
+    )
+  }
+
   return (
     <><Home>
       {/* hero */}
@@ -24,10 +34,10 @@ const HomePage = () => {
       <Categories>
         <MainPage>
           <SectionHead>
-            <SectionHeadH variant='h2'>Browse by Category</SectionHeadH>
+            <SectionHeadH >Browse by Category</SectionHeadH>
             <SectionHeadP variant='p'>Click a category to explore available professionals</SectionHeadP>
           </SectionHead>
-          <ServiceCard />
+          <ServiceCard  onSelectCategory={setSelectedCategory}/>
         </MainPage>
       </Categories>
       {/* how it works */}
@@ -42,11 +52,6 @@ const HomePage = () => {
               <HIWNum>1</HIWNum>
               <HIWH>Browse or Search</HIWH>
               <HIWP>Find the type of service you need from our growing list of categories.</HIWP>
-            </HIWStep>
-            <HIWStep>
-              <HIWNum>2</HIWNum>
-              <HIWH>View Profiles</HIWH>
-              <HIWP>Compare providers by ratings, descriptions, and location.</HIWP>
             </HIWStep>
             <HIWStep>
               <HIWNum>2</HIWNum>
@@ -74,14 +79,6 @@ const HomePage = () => {
       </CTAContainer>
       <Footer>@ 2026 ServeLink · Built for local service communities</Footer>
     </Home>
-     {selectedCategory ? (
-      <ProviderView
-        category={selectedCategory}
-        goBack={() => setSelectedCategory(null)}
-      />
-    ) : (
-      <ServiceCard />
-    )}
     </>
   )
 }

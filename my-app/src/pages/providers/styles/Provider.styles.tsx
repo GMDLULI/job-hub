@@ -1,6 +1,6 @@
-import styled from "styled-components"
 
-/* SECTION */
+
+import styled from "styled-components"
 
 export const ProviderSection = styled.div`
   width: 100%;
@@ -11,7 +11,6 @@ export const Page = styled.div`
   margin: auto;
 `
 
-/* HEADER */
 
 export const ProviderHead = styled.div`
   margin-bottom: 30px;

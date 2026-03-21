@@ -1,11 +1,16 @@
 import React, { useState } from 'react'
 
 import './App.css'
+import NavBar from './components/navigation/nav-bar/NavBar'
+import HomePage from './pages/home/HomePage'
 
 function App() {
 
   return (
-    <h1>Hi this is my job hub </h1>
+    <div>
+      <NavBar />
+      <HomePage />
+    </div>
   )
 }
 

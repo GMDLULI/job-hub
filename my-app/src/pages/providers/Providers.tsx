@@ -35,7 +35,7 @@ const ProviderView: React.FC<Props> = ({ category, goBack }) => {
       <Page>
 
         <BackButton onClick={goBack}>
-          ← Back to Categories
+          ← Back to Home
         </BackButton>
 
         <ProviderHead>
