@@ -1,7 +1,10 @@
 import styled from "styled-components";
 import Text from "../../../components/display/text/Text";
 
-export const Home = styled.div``;
+export const Home = styled.div`
+    width:100%;
+    background: #fafaf9
+`;
 
 export const MainPage = styled.div`
     max-width: 1100px; 
@@ -11,21 +14,19 @@ export const MainPage = styled.div`
 ` 
 export const Hero = styled.div`
     padding: 72px 0 56px;
-    display: grid; 
-    grid-template-columns: 1fr 1fr;
     gap: 48px; 
     align-items: center;
 `
 
 export const HeroTag = styled.div`
-    display: inline-flex; 
-    align-items: center; 
-    gap: 7px;
+    display: inline-block; 
     background: #7C2D12; 
     color: #FFF7ED;
     font-size: 12px; 
-    font-weight: 500; 
-    padding: 5px 13px;
+    font-weight: 600; 
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 5px 14px;
     border-radius: 50px; 
     margin-bottom: 20px;
 
@@ -37,7 +38,16 @@ export const HeroTag = styled.div`
         border-radius: 50%;
     }
 `
+export const HeroSubtext = styled.p`
+  font-size: 20px;
+  font-weight: 300px;
+  color: var(--muted, #6B7280);
+  line-height: 1.75;
+  margin: 16px 0 24px;
+  max-width: 600px;
+`
 
+/** Categories */
 
 export const Categories = styled.section`
     padding: 64px 0;
@@ -62,9 +72,67 @@ export const SectionHeadH = styled.h2`
     margin-bottom: 8px
 `
 
+/** Why section */
+
+export const WhySection = styled.section`
+  padding: 72px 0;
+  background: var(--bg, #fafaf9);
+`
+ 
+export const WhyGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 24px;
+`
+ 
+export const WhyCard = styled.div`
+  background: #fff;
+  border: 1px solid var(--border, #E5E7EB);
+  border-radius: 16px;
+  padding: 28px 24px;
+  transition: box-shadow 0.2s, transform 0.2s;
+ 
+  &:hover {
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+    transform: translateY(-3px);
+  }
+`
+ 
+export const WhyIcon = styled.div`
+   font-size: 32px;
+   margin-bottom: 14px;
+   width: 48px;
+   height: 48px;
+
+   img {
+     width: 100%;
+     height: 100%;
+     object-fit: contain;
+   }
+`
+ 
+export const WhyTitle = styled.h3`
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text, #111827);
+  margin-bottom: 8px;
+  font-family: 'DM Sans', sans-serif;
+`
+ 
+export const WhyText = styled.p`
+  font-size: 18px;
+  color: var(--muted, #6B7280);
+  line-height: 1.7;
+`
+
+/** How it works  */
+ 
+
 export const HIWContainer = styled.section`
-    padding: 64px 0; 
-    background: #F5F5F4;
+    padding: 72px 0;
+    background: #fff;
+    border-top: 1px solid var(--border, #E5E7EB);
+    border-bottom: 1px solid var(--border, #E5E7EB);
 
 `
 
@@ -96,17 +164,18 @@ export const HIWNum = styled.div`
     margin: 0 auto 16px;
 `
 
-export const HIWP = styled.p `
-    font-size: 13px; 
-    color: #78716C; 
-    line-height: 1.65;
-
-`
 export const HIWH = styled.h3`
-    font-size: 15px; 
-    font-weight: 500;
-    margin-bottom: 7px;
-
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text, #111827);
+  margin-bottom: 8px;
+  font-family: 'DM Sans', sans-serif;
+`
+ 
+export const HIWP = styled.p`
+  font-size: 18px;
+  color: var(--muted, #6B7280);
+  line-height: 1.7;
 `
 
 export const CTAContainer = styled.section`

@@ -10,5 +10,6 @@ export interface Provider {
 export interface ProviderProps {
   name: string
   count: number
+  img: string
   providers: Provider[]
 }
