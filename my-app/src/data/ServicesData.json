@@ -10,15 +10,47 @@
         "title": "Nail Art Specialist",
         "desc": "Gel, acrylic, and nail art designs.",
         "stars": "★★★★★",
-        "badge": "Top Rated"
+        "badge": "Top Rated",
+        "about": "Zanele has been perfecting her craft for over 8 years. She trained at the SA Beauty Academy and has worked with top salons in Sandton and Rosebank before going independent. She is known for her intricate nail art designs and attention to detail — every set is a mini work of art.",
+        "location": "Sandton, Johannesburg, Gauteng",
+        "mapUrl": "https://maps.google.com/?q=Sandton,Johannesburg",
+        "phone": "+27 82 000 1111",
+        "email": "zanele.nails@gmail.com",
+        "services": [
+          { "name": "Gel Manicure", "price": "R350", "duration": "60 min" },
+          { "name": "Acrylic Full Set", "price": "R500", "duration": "90 min" },
+          { "name": "Nail Art (per nail)", "price": "R30", "duration": "15 min" },
+          { "name": "Pedicure", "price": "R280", "duration": "45 min" },
+          { "name": "Nail Removal & Prep", "price": "R150", "duration": "30 min" }
+        ],
+        "gallery": [
+          "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400&q=80",
+          "https://images.unsplash.com/photo-1604654894582-3b71f7ed1e39?w=400&q=80",
+          "https://images.unsplash.com/photo-1604654894649-15399bdb7b57?w=400&q=80"
+        ]
       },
       {
         "name": "Precious Khumalo",
         "avatar": "https://randomuser.me/api/portraits/women/68.jpg",
         "title": "Nail Technician",
-        "desc": "5+ years experience.",
+        "desc": "5+ years experience in gel and acrylic nails.",
         "stars": "★★★★☆",
-        "badge": ""
+        "badge": "",
+        "about": "Precious is a certified nail technician based in Soweto with over 5 years of hands-on experience. She specialises in long-lasting gel sets and offers a warm, welcoming experience from her home studio. Flexible hours make her a favourite among working professionals.",
+        "location": "Soweto, Johannesburg, Gauteng",
+        "mapUrl": "https://maps.google.com/?q=Soweto,Johannesburg",
+        "phone": "+27 73 000 2222",
+        "email": "precious.nails@gmail.com",
+        "services": [
+          { "name": "Gel Overlay", "price": "R300", "duration": "60 min" },
+          { "name": "Acrylic Full Set", "price": "R450", "duration": "90 min" },
+          { "name": "Gel Polish Change", "price": "R180", "duration": "30 min" },
+          { "name": "Basic Manicure", "price": "R150", "duration": "30 min" }
+        ],
+        "gallery": [
+          "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400&q=80",
+          "https://images.unsplash.com/photo-1604654894649-15399bdb7b57?w=400&q=80"
+        ]
       }
     ]
   },
@@ -33,7 +65,24 @@
         "title": "Senior Stylist",
         "desc": "Specialises in relaxers and natural hair care.",
         "stars": "★★★★★",
-        "badge": "Top Rated"
+        "badge": "Top Rated",
+        "about": "Lebo is a senior hair stylist with 12 years of experience across Johannesburg's top salons. She specialises in natural hair care, protective styles, and chemical treatments. Her salon in Midrand is fully equipped and offers a luxurious, relaxed atmosphere.",
+        "location": "Midrand, Johannesburg, Gauteng",
+        "mapUrl": "https://maps.google.com/?q=Midrand,Johannesburg",
+        "phone": "+27 84 000 3333",
+        "email": "lebo.hair@gmail.com",
+        "services": [
+          { "name": "Relaxer Treatment", "price": "R600", "duration": "120 min" },
+          { "name": "Box Braids", "price": "R800", "duration": "240 min" },
+          { "name": "Wash & Blow Dry", "price": "R250", "duration": "60 min" },
+          { "name": "Colour Treatment", "price": "R750", "duration": "150 min" },
+          { "name": "Trim & Style", "price": "R200", "duration": "45 min" }
+        ],
+        "gallery": [
+          "https://images.unsplash.com/photo-1560869713-7d0a29430803?w=400&q=80",
+          "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&q=80",
+          "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=400&q=80"
+        ]
       }
     ]
   },
@@ -43,7 +92,7 @@
     "img": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=80",
     "providers": []
   },
-   {
+  {
     "name": "Construction",
     "count": 17,
     "img": "https://images.pexels.com/photos/32751450/pexels-photo-32751450.jpeg",

@@ -1,3 +1,9 @@
+export interface ProviderService {
+  name: string
+  price: string
+  duration: string
+}
+
 export interface Provider {
   name: string
   avatar: string
@@ -5,6 +11,13 @@ export interface Provider {
   desc: string
   stars: string
   badge?: string
+   about?: string
+  location?: string
+  mapUrl?: string
+  phone?: string
+  email?: string
+  services?: ProviderService[]
+  gallery?: string[]
 }
 
 export interface ProviderProps {

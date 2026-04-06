@@ -26,7 +26,8 @@ import {
   EmptyStateTitle,
   EmptyStateText,
 } from "./styles/Provider.styles"
-import type { ProviderProps } from "./Providers.types"
+import type { Provider, ProviderProps } from "./Providers.types"
+import JobView from "../jobs/Jobs"
 
 /* ─── category config ─────────────────────────────────────────
    bgImage comes directly from the JSON (category.img).
@@ -97,6 +98,7 @@ interface Props {
 
 const ProviderView: React.FC<Props> = ({ category, goBack }) => {
   const [loaded, setLoaded] = useState(false)
+  const [selectedProvider, setSelectedProvider] = useState<Provider | null>(null)
   const meta = getMeta(category.name)
 
   // Show empty state if no providers listed OR no description written for this category
@@ -107,6 +109,17 @@ const ProviderView: React.FC<Props> = ({ category, goBack }) => {
     const t = setTimeout(() => setLoaded(true), 80)
     return () => clearTimeout(t)
   }, [])
+
+  if (selectedProvider) {
+    return (
+      <JobView
+        provider={selectedProvider}
+        accent={meta.accent}
+        categoryName={category.name}
+        goBack={() => setSelectedProvider(null)}
+      />
+    )
+  }
 
   return (
     <ProviderSection $loaded={loaded}>
@@ -158,7 +171,12 @@ const ProviderView: React.FC<Props> = ({ category, goBack }) => {
 
             <ProviderGrid>
               {category.providers.map((provider, index) => (
-                <ProviderCard key={index} $delay={index * 60} $accent={meta.accent}>
+                <ProviderCard 
+                  key={index} 
+                  $delay={index * 60} 
+                  $accent={meta.accent}
+                  onClick={() => setSelectedProvider(provider)}
+                >
                   <ProviderAvatar
                     src={provider.avatar}
                     alt={provider.name}
