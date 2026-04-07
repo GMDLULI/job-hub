@@ -1,4 +1,3 @@
-import React from 'react'
 import { Logo, LogoContainer, NavBarContainer, NavButton, NavLink, NavLinkContainer } from './styles/NavBar.styles'
 
 const NavBar = () => {

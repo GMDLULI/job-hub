@@ -1,3 +1,3 @@
-interface MainButtonsProps {
-    label ?: string; 
-}
+// interface MainButtonsProps {
+//     label ?: string; 
+// }

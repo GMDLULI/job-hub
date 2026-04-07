@@ -1,4 +1,3 @@
-import React from 'react'
 import { SearchBarContainer, SearchButton, SearchInput } from './styles/SearchBar.styles'
 
 const SearchBar = () => {

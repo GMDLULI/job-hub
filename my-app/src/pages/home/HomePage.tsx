@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import  { useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import { Categories, CTAButtonOutline, CTAButtons, CTAButtonWhite, CTAContainer, Footer, Hero, HeroSubtext, HeroTag, HIWContainer, HIWH, HIWNum, HIWP, HIWStep, HIWSteps, Home, MainPage, SectionHead, SectionHeadH, SectionHeadP, WhyCard, WhyGrid, WhyIcon, WhySection, WhyText, WhyTitle } from './styles/HomePage.styles'
 import Text from '../../components/display/text/Text'

@@ -1,4 +1,3 @@
-import React from 'react'
 import {
   PageWrapper,
   PageHero,
@@ -27,13 +26,6 @@ import {
   TeamName,
   TeamRole,
   TeamBio,
-  Timeline,
-  TimelineItem,
-  TimelineDot,
-  TimelineYear,
-  TimelineContent,
-  TimelineTitle,
-  TimelineText,
   PageFooter,
 } from './styles/AboutPage.styles'
 
