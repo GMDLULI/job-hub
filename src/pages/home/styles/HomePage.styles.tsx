@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Text from "../../../components/display/text/Text";
+import backgroundImage from "../../../assets/images/heme-hero-bg.jpg";
 
 export const Home = styled.div`
     width:100%;
@@ -7,20 +8,32 @@ export const Home = styled.div`
 `;
 
 export const MainPage = styled.div`
-    max-width: 1100px; 
+    max-width: 1200px; 
     margin: 0 auto;
     padding: 0 24px;
+   
 
 ` 
+
+export const MainPageHero = styled.section`
+    width: 100%;
+    background-image: url(${backgroundImage});
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+`
+
 export const Hero = styled.div`
-    padding: 72px 0 56px;
+    padding: 72px 50px 56px;
     gap: 48px; 
     align-items: center;
+   
 `
 
 export const HeroTag = styled.div`
     display: inline-block; 
-    background: #7C2D12; 
+    background: #573b2f; 
     color: #FFF7ED;
     font-size: 12px; 
     font-weight: 600; 
@@ -38,11 +51,12 @@ export const HeroTag = styled.div`
         border-radius: 50%;
     }
 `
-export const HeroSubtext = styled.p`
-  font-size: 20px;
-  font-weight: 300px;
-  color: var(--muted, #6B7280);
-  line-height: 1.75;
+
+export const HeroText = styled(Text)`
+    margin: 0px;
+`
+
+export const HeroSubtext = styled.div`
   margin: 16px 0 24px;
   max-width: 600px;
 `
@@ -62,12 +76,7 @@ export const SectionHeadP = styled(Text)`
     margin-bottom: 0px;
 `
 
-export const SectionHeadH = styled.h2`
-    font-family: "Playfair Display", serif;
-    font-size: 40px;
-    font-weight: 700;
-    margin-bottom: 12px;
-    color: #3e3c3c;
+export const SectionHeadH = styled(Text)`
     font-size: 38px;
     margin-bottom: 8px
 `
@@ -114,14 +123,14 @@ export const WhyIcon = styled.div`
 export const WhyTitle = styled.h3`
   font-size: 20px;
   font-weight: 600;
-  color: var(--text, #111827);
+  color:  #111827;
   margin-bottom: 8px;
   font-family: 'DM Sans', sans-serif;
 `
  
 export const WhyText = styled.p`
   font-size: 18px;
-  color: var(--muted, #6B7280);
+  color:  #6B7280;
   line-height: 1.7;
 `
 

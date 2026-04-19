@@ -37,32 +37,38 @@ import {
   FaqA,
   PageFooter,
 } from './styles/ContactPage.styles'
-const faqs = [
-  {
-    q: 'Is ServeLink free to use?',
-    a: 'Yes — browsing profiles and contacting providers is completely free for clients. Providers can also list their services at no cost during our launch period.',
-  },
-  {
-    q: 'How do I list my services as a provider?',
-    a: 'Send us a message using the contact form above and select "Become a Provider". Our team will reach out to get your profile set up.',
-  },
-  {
-    q: 'How are providers verified?',
-    a: 'We manually review each provider application and collect proof of work where applicable. Client ratings and reviews then maintain ongoing quality on the platform.',
-  },
-  {
-    q: 'Which areas does ServeLink currently cover?',
-    a: 'We are live across all 9 provinces of South Africa, with the strongest coverage in Gauteng, the Western Cape, and KwaZulu-Natal.',
-  },
-  {
-    q: 'I found an issue on the platform. How do I report it?',
-    a: 'Use the contact form and select "Report an Issue". Our team aims to respond within one business day.',
-  },
-  {
-    q: 'Can I suggest a new service category?',
-    a: 'Absolutely — we love hearing from the community. Select "General Enquiry" in the form and tell us what category you\'d like to see added.',
-  },
-]
+import Text  from '../../components/display/text/Text'
+import Pin from '../../assets/icons/pin-1.png'
+import instagram from '../../assets/icons/instagram.png'
+import mail from '../../assets/icons/communication.png'
+import phone from '../../assets/icons/call.png'
+
+// const faqs = [
+//   {
+//     q: 'Is Pandapreneur free to use?',
+//     a: 'Yes — browsing profiles and contacting providers is completely free for clients. Providers can also list their services at no cost during our launch period.',
+//   },
+//   {
+//     q: 'How do I list my services as a provider?',
+//     a: 'Send us a message using the contact form above and select "Become a Provider". Our team will reach out to get your profile set up.',
+//   },
+//   {
+//     q: 'How are providers verified?',
+//     a: 'We manually review each provider application and collect proof of work where applicable. Client ratings and reviews then maintain ongoing quality on the platform.',
+//   },
+//   {
+//     q: 'Which areas does Pandapreneur currently cover?',
+//     a: 'We are live across all 9 provinces of South Africa, with the strongest coverage in Gauteng, the Western Cape, and KwaZulu-Natal.',
+//   },
+//   {
+//     q: 'I found an issue on the platform. How do I report it?',
+//     a: 'Use the contact form and select "Report an Issue". Our team aims to respond within one business day.',
+//   },
+//   {
+//     q: 'Can I suggest a new service category?',
+//     a: 'Absolutely — we love hearing from the community. Select "General Enquiry" in the form and tell us what category you\'d like to see added.',
+//   },
+// ]
 
 const ContactPage = () => {
   const [submitted, setSubmitted] = useState(false)
@@ -86,7 +92,9 @@ const ContactPage = () => {
   }
 
   return (
-    <PageWrapper>
+
+        <>
+        <PageWrapper>
 
       {/* ── HERO ── */}
       <PageHero>
@@ -94,10 +102,10 @@ const ContactPage = () => {
         <PageHeroOverlay />
         <PageHeroContent>
           <PageTag>Get in Touch</PageTag>
-          <PageHeroTitle>We'd love to hear from you</PageHeroTitle>
+          <PageHeroTitle variant='h1' color='light' size='lg' fontFamily='nunito'>We'd love to hear from you</PageHeroTitle>
           <PageHeroSub>
             Whether you're a client with a question, a provider wanting to join,
-            or just curious about ServeLink — our team is here and ready to help.
+            or just curious about Pandapreneur — our team is here and ready to help.
           </PageHeroSub>
         </PageHeroContent>
       </PageHero>
@@ -108,7 +116,7 @@ const ContactPage = () => {
 
           {/* form */}
           <FormSide>
-            <FormTitle>Send us a message</FormTitle>
+            <FormTitle variant='h2' fontFamily='raleway' size='lg'>Send us a message</FormTitle>
             <FormSubtitle>We typically respond within one business day.</FormSubtitle>
 
             {submitted ? (
@@ -116,57 +124,62 @@ const ContactPage = () => {
                 <span>✅</span>
                 <div>
                   <strong>Message sent!</strong>
-                  <p>Thanks {form.name}, we'll be in touch at {form.email} shortly.</p>
+                  <Text variant='p' fontFamily='raleway' size='md'>Thanks {form.name}, we'll be in touch at {form.email} shortly.</Text>
                 </div>
               </SuccessMessage>
             ) : (
               <>
                 <FormGroup>
-                  <FormLabel>Full Name *</FormLabel>
+                  <Text variant='label' fontFamily='raleway' size='sm' color='text'>
+                    Full Name *
+                  </Text>
                   <FormInput
                     name="name"
                     placeholder="e.g. Sipho Ndlovu"
                     value={form.name}
-                    onChange={handleChange}
-                  />
+                    onChange={handleChange} />
                 </FormGroup>
 
                 <FormGroup>
-                  <FormLabel>Email Address *</FormLabel>
+                  <Text variant='label' fontFamily='raleway' size='sm' color='text'>
+                    Email Address *
+                  </Text>
                   <FormInput
                     name="email"
                     type="email"
                     placeholder="you@example.com"
                     value={form.email}
-                    onChange={handleChange}
-                  />
+                    onChange={handleChange} />
                 </FormGroup>
 
                 <FormGroup>
-                  <FormLabel>Subject</FormLabel>
+                  <Text variant='label' fontFamily='raleway' size='sm' color='text'>
+                    Subject
+                  </Text>
                   <FormSelect name="subject" value={form.subject} onChange={handleChange}>
-                    <option value="">Select a topic…</option>
-                    <option value="general">General Enquiry</option>
-                    <option value="provider">Become a Provider</option>
-                    <option value="support">Client Support</option>
-                    <option value="report">Report an Issue</option>
-                    <option value="partnership">Partnership / Press</option>
+                    <option value=""> Select a topic…</option>
+                    <option value="general"> General Enquiry</option>
+                    <option value="provider"> Become a Provider</option>
+                    <option value="support"> Client Support</option>
+                    <option value="report"> Report an Issue</option>
+                    <option value="partnership"> Partnership / Press</option>
                   </FormSelect>
                 </FormGroup>
 
                 <FormGroup>
-                  <FormLabel>Message *</FormLabel>
+                  <Text variant='label' fontFamily='raleway' size='sm' color='text'>
+                    Message *
+                  </Text>
                   <FormTextarea
                     name="message"
                     rows={5}
                     placeholder="Tell us how we can help…"
                     value={form.message}
-                    onChange={handleChange}
-                  />
+                    onChange={handleChange} />
                 </FormGroup>
 
                 <SubmitButton onClick={handleSubmit}>
-                  Send Message →
+                  Send Message 
                 </SubmitButton>
               </>
             )}
@@ -175,34 +188,34 @@ const ContactPage = () => {
           {/* info cards */}
           <InfoSide>
             <InfoCard>
-              <InfoIcon>📧</InfoIcon>
-              <InfoTitle>Email Us</InfoTitle>
+              <InfoIcon src={mail} alt='mail icon'></InfoIcon>
+              <Text variant='label' fontFamily='raleway' size='sm' color='text'>Email Us</Text>
               <InfoText>For general questions and enquiries</InfoText>
-              <InfoLink href="mailto:hello@servelink.co.za">hello@servelink.co.za</InfoLink>
+              <InfoLink href="mailto:phandapreneurbusinesshub@gmail.com">phandapreneurbusinesshub@gmail.com</InfoLink>
             </InfoCard>
 
             <InfoCard>
-              <InfoIcon>📞</InfoIcon>
-              <InfoTitle>Call Us</InfoTitle>
+              <InfoIcon src={phone} alt="Phone Icon"></InfoIcon>
+              <Text variant='label' fontFamily='raleway' size='sm' color='text'>Call Us</Text>
               <InfoText>Mon – Fri, 8am – 5pm (SAST)</InfoText>
-              <InfoLink href="tel:+27110000000">+27 11 000 0000</InfoLink>
+              <InfoLink href="tel:+2797288652">+27 79 728 8652</InfoLink>
             </InfoCard>
 
-            <InfoCard>
-              <InfoIcon>📍</InfoIcon>
-              <InfoTitle>Our Office</InfoTitle>
+            {/* <InfoCard>
+              <InfoIcon src={Pin} alt="Office Location" ></InfoIcon>
+              <Text variant='label' fontFamily='raleway' size='sm' color='text'>Our Office</Text>
               <InfoText>
                 The Innovation Hub<br />
                 Mark Shuttleworth Street<br />
                 Pretoria, Gauteng, 0087
               </InfoText>
-            </InfoCard>
+            </InfoCard> */}
 
             <InfoCard>
-              <InfoIcon>💬</InfoIcon>
-              <InfoTitle>Social Media</InfoTitle>
+              <InfoIcon src={instagram} alt="Social Media" ></InfoIcon>
+              <Text variant='label' fontFamily='raleway' size='sm' color='text'>Social Media</Text>
               <InfoText>Follow us and join the conversation</InfoText>
-              <InfoLink href="#">@ServeLink_SA</InfoLink>
+              <InfoLink href="#">@Pandapreneur_SA</InfoLink>
             </InfoCard>
           </InfoSide>
 
@@ -212,7 +225,7 @@ const ContactPage = () => {
       <Divider />
 
       {/* ── FAQ ── */}
-      <FaqSection>
+      {/* <FaqSection>
         <FaqInner>
           <FaqLabel>Quick Answers</FaqLabel>
           <FaqTitle>Frequently asked questions</FaqTitle>
@@ -225,11 +238,11 @@ const ContactPage = () => {
             ))}
           </FaqGrid>
         </FaqInner>
-      </FaqSection>
+      </FaqSection> */}
 
-      <PageFooter>© 2026 ServeLink · Built for local service communities across South Africa</PageFooter>
+      <PageFooter>© 2026 Pandapreneur · Built for local service communities across South Africa</PageFooter>
 
-    </PageWrapper>
+    </PageWrapper></>
   )
 }
 

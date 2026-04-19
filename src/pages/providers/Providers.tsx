@@ -128,7 +128,6 @@ const ProviderView: React.FC<Props> = ({ category, goBack }) => {
       <HeroBanner $bg={category.img} $accent={meta.accent}>
         <HeroBannerOverlay $accent={meta.accent} />
         <HeroBannerContent>
-          <BackButton onClick={goBack}>Back to Home</BackButton>
           <HeroCategoryLabel $accent={meta.accent}>
             {meta.tagline}
           </HeroCategoryLabel>

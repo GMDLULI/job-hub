@@ -1,8 +1,9 @@
 import styled from 'styled-components'
+import Text from '../../../components/display/text/Text'
 
 export const PageWrapper = styled.div`
   width: 100%;
-  background: var(--bg, #fafaf9);
+  background:  #fafaf9;
 `
 
 /* ── HERO (shared pattern with About) ── */
@@ -53,13 +54,8 @@ export const PageTag = styled.span`
   margin-bottom: 18px;
   backdrop-filter: blur(6px);
 `
-
-export const PageHeroTitle = styled.h1`
-  font-family: 'Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+export const PageHeroTitle = styled(Text)`
   font-size: clamp(30px, 5vw, 50px);
-  font-weight: 700;
-  color: #fff;
-  line-height: 1.15;
   margin-bottom: 14px;
   text-shadow: 0 2px 20px rgba(0,0,0,0.35);
 `
@@ -96,11 +92,8 @@ export const ContactInner = styled.div`
 
 export const FormSide = styled.div``
 
-export const FormTitle = styled.h2`
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  font-size: 28px;
-  font-weight: 700;
-  color: var(--text, #111827);
+export const FormTitle = styled(Text)`
+  color: #111827;
   margin-bottom: 6px;
 `
 
@@ -118,7 +111,7 @@ export const FormLabel = styled.label`
   display: block;
   font-size: 13px;
   font-weight: 600;
-  color: var(--text, #374151);
+  color:  #374151;
   margin-bottom: 7px;
 `
 
@@ -126,41 +119,41 @@ export const FormInput = styled.input`
   width: 100%;
   padding: 11px 14px;
   font-size: 14px;
-  font-family: 'Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  border: 1px solid var(--border, #E5E7EB);
-  border-radius: 10px;
-  background: var(--bg, #fafaf9);
-  color: var(--text, #111827);
+  font-family: 'Raleway', Cambria, serif;
+  border: 1px solid #E5E7EB;
+  border-radius: 20px;
+  background: #fafaf9;
+  color: #111827;
   outline: none;
   box-sizing: border-box;
   transition: border-color 0.2s, box-shadow 0.2s;
 
   &:focus {
-    border-color: var(--brand, #C2410C);
-    box-shadow: 0 0 0 3px rgba(194,65,12,0.1);
+    border-color: #C2410C;
+    box-shadow: 0 0 0 3px rgba(194, 65, 12, 0.1);
   }
 
   &::placeholder {
-    color: var(--muted, #9CA3AF);
+    color: #9CA3AF;
   }
-`
+`;
 
 export const FormSelect = styled.select`
   width: 100%;
   padding: 11px 14px;
   font-size: 14px;
-  font-family: 'Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  border: 1px solid var(--border, #E5E7EB);
+  font-family: 'Raleway', 'Cambria', 'serif';
+  border: 1px solid  #E5E7EB;
   border-radius: 10px;
-  background: var(--bg, #fafaf9);
-  color: var(--text, #111827);
+  background:  #fafaf9;
+  color:  #111827;
   outline: none;
   box-sizing: border-box;
   cursor: pointer;
   transition: border-color 0.2s, box-shadow 0.2s;
 
   &:focus {
-    border-color: var(--brand, #C2410C);
+    border-color:  #C2410C;
     box-shadow: 0 0 0 3px rgba(194,65,12,0.1);
   }
 `
@@ -169,28 +162,28 @@ export const FormTextarea = styled.textarea`
   width: 100%;
   padding: 11px 14px;
   font-size: 14px;
-  font-family: 'Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  border: 1px solid var(--border, #E5E7EB);
+  font-family: 'raleway';
+  border: 1px solid  #E5E7EB;
   border-radius: 10px;
-  background: var(--bg, #fafaf9);
-  color: var(--text, #111827);
+  background:  #fafaf9;
+  color: #111827;
   outline: none;
   resize: vertical;
   box-sizing: border-box;
   transition: border-color 0.2s, box-shadow 0.2s;
 
   &:focus {
-    border-color: var(--brand, #C2410C);
+    border-color: #C2410C;
     box-shadow: 0 0 0 3px rgba(194,65,12,0.1);
   }
 
   &::placeholder {
-    color: var(--muted, #9CA3AF);
+    color: #9CA3AF;
   }
 `
 
 export const SubmitButton = styled.button`
-  background: var(--brand, #C2410C);
+  background:  #573b2f;
   color: #fff;
   border: none;
   padding: 13px 32px;
@@ -202,7 +195,7 @@ export const SubmitButton = styled.button`
   transition: background 0.2s, transform 0.15s;
 
   &:hover {
-    background: #7C2D12;
+    background: #68534b;
     transform: translateY(-1px);
   }
 
@@ -247,7 +240,7 @@ export const InfoSide = styled.div`
 
 export const InfoCard = styled.div`
   background: var(--bg, #fafaf9);
-  border: 1px solid var(--border, #E5E7EB);
+  border: 1px solid #E5E7EB;
   border-radius: 14px;
   padding: 22px 20px;
   transition: box-shadow 0.2s;
@@ -257,21 +250,24 @@ export const InfoCard = styled.div`
   }
 `
 
-export const InfoIcon = styled.div`
+export const InfoIcon = styled.img`
   font-size: 24px;
   margin-bottom: 10px;
+  width: 28px;
+  height: 28px;
 `
 
 export const InfoTitle = styled.div`
   font-size: 14px;
+  font-family: 'raleway';
   font-weight: 600;
-  color: var(--text, #111827);
+  color:  #111827;
   margin-bottom: 4px;
 `
 
 export const InfoText = styled.p`
   font-size: 13px;
-  color: var(--muted, #6B7280);
+  color: #6B7280;
   line-height: 1.6;
   margin: 0 0 6px;
 `
@@ -279,7 +275,7 @@ export const InfoText = styled.p`
 export const InfoLink = styled.a`
   font-size: 13px;
   font-weight: 600;
-  color: var(--brand, #C2410C);
+  color: #C2410C;
   text-decoration: none;
 
   &:hover {
@@ -291,7 +287,7 @@ export const InfoLink = styled.a`
 
 export const Divider = styled.div`
   height: 1px;
-  background: var(--border, #E5E7EB);
+  background:#E5E7EB;
   max-width: 1200px;
   margin: 0 auto;
 `
@@ -300,7 +296,7 @@ export const Divider = styled.div`
 
 export const FaqSection = styled.section`
   padding: 72px 24px;
-  background: var(--bg, #fafaf9);
+  background:  #fafaf9;
 `
 
 export const FaqInner = styled.div`
@@ -313,7 +309,7 @@ export const FaqLabel = styled.p`
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--brand, #C2410C);
+  color:  #C2410C;
   margin-bottom: 10px;
 `
 
@@ -321,7 +317,7 @@ export const FaqTitle = styled.h2`
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-size: clamp(24px, 3vw, 34px);
   font-weight: 700;
-  color: var(--text, #111827);
+  color:  #111827;
   margin-bottom: 40px;
 `
 
@@ -333,7 +329,7 @@ export const FaqGrid = styled.div`
 
 export const FaqItem = styled.div`
   background: #fff;
-  border: 1px solid var(--border, #E5E7EB);
+  border: 1px solid  #E5E7EB;
   border-radius: 14px;
   padding: 24px 22px;
   transition: box-shadow 0.2s;
@@ -346,7 +342,7 @@ export const FaqItem = styled.div`
 export const FaqQ = styled.h3`
   font-size: 15px;
   font-weight: 600;
-  color: var(--text, #111827);
+  color:  #111827;
   margin-bottom: 10px;
   font-family: 'Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;;
   line-height: 1.4;
@@ -354,7 +350,7 @@ export const FaqQ = styled.h3`
 
 export const FaqA = styled.p`
   font-size: 13px;
-  color: var(--muted, #6B7280);
+  color: #6B7280;
   line-height: 1.7;
   margin: 0;
 `
@@ -365,7 +361,7 @@ export const PageFooter = styled.footer`
   text-align: center;
   padding: 24px;
   font-size: 13px;
-  color: var(--muted, #9CA3AF);
+  color: #9CA3AF;
   background: #fff;
-  border-top: 1px solid var(--border, #E5E7EB);
+  border-top: 1px solid  #E5E7EB;
 `

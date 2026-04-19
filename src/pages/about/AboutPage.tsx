@@ -1,3 +1,4 @@
+import NavBar from '../../components/navigation/nav-bar/NavBar'
 import {
   PageWrapper,
   PageHero,
@@ -66,7 +67,9 @@ const values = [
 
 const AboutPage = () => {
   return (
-    <PageWrapper>
+
+        <>
+        <PageWrapper>
 
       {/* ── HERO ── */}
       <PageHero>
@@ -151,7 +154,7 @@ const AboutPage = () => {
 
       <PageFooter>© 2026 ServeLink · Built for local service communities across South Africa</PageFooter>
 
-    </PageWrapper>
+    </PageWrapper></>
   )
 }
 
