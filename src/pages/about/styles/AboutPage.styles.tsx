@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import Text from '../../../components/display/text/Text'
 
 export const PageWrapper = styled.div`
   width: 100%;
@@ -54,8 +55,7 @@ export const PageTag = styled.span`
   backdrop-filter: blur(6px);
 `
 
-export const PageHeroTitle = styled.h1`
-  font-family: "Cambria, Cochin, Georgia, Times, 'Times New Roman', serif"
+export const PageHeroTitle = styled(Text)`
   font-size: clamp(32px, 5vw, 54px);
   font-weight: 700;
   color: #fff;
@@ -84,24 +84,17 @@ export const SectionInner = styled.div`
   margin: 0 auto;
 `
 
-export const SectionLabel = styled.p`
-  font-size: 12px;
-  font-weight: 600;
+export const SectionLabel = styled(Text)`
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--brand, #C2410C);
-  margin-bottom: 10px;
 `
 
-export const SectionTitle = styled.h2`
-  font-family: "Cambria, Cochin, Georgia, Times, 'Times New Roman', serif"
+export const SectionTitle = styled(Text)`
   font-size: clamp(24px, 3vw, 36px);
   font-weight: 700;
-  color: var(--text, #111827);
-  margin-bottom: 12px;
 `
 
-export const SectionBody = styled.p`
+export const SectionBody = styled(Text)`
   font-size: 15px;
   color: var(--muted, #6B7280);
   max-width: 540px;
@@ -123,9 +116,8 @@ export const TwoCol = styled.div`
   }
 `
 
-export const MissionText = styled.p`
+export const MissionText = styled(Text)`
   font-size: 15px;
-  color: var(--muted, #6B7280);
   line-height: 1.8;
   margin-bottom: 18px;
 `
@@ -133,6 +125,7 @@ export const MissionText = styled.p`
 export const MissionHighlight = styled.p`
   font-size: 16px;
   font-weight: 500;
+  font-family: 'Raleway', sans-serif;
   color: var(--text, #111827);
   line-height: 1.75;
   border-left: 3px solid var(--brand, #C2410C);
@@ -167,7 +160,7 @@ export const ValueIcon = styled.div`
   margin-bottom: 14px;
 `
 
-export const ValueTitle = styled.h3`
+export const ValueTitle = styled(Text)`
   font-size: 15px;
   font-weight: 600;
   color: var(--text, #111827);
@@ -175,9 +168,8 @@ export const ValueTitle = styled.h3`
   font-family: "Cambria, Cochin, Georgia, Times, 'Times New Roman', serif"
 `
 
-export const ValueText = styled.p`
+export const ValueText = styled(Text)`
   font-size: 13px;
-  color: var(--muted, #6B7280);
   line-height: 1.7;
 `
 
@@ -216,19 +208,20 @@ export const TeamAvatar = styled.img`
 
 export const TeamName = styled.div`
   font-size: 15px;
+  font-family: "Cambria, Cochin, Georgia, Times, 'Times New Roman', serif";
   font-weight: 600;
   color: var(--text, #111827);
   margin-bottom: 4px;
 `
 
-export const TeamRole = styled.div`
+export const TeamRole = styled(Text)`
   font-size: 12px;
   font-weight: 500;
   color: var(--brand, #C2410C);
   margin-bottom: 10px;
 `
 
-export const TeamBio = styled.p`
+export const TeamBio = styled(Text)`
   font-size: 13px;
   color: var(--muted, #6B7280);
   line-height: 1.65;

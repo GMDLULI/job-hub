@@ -20,6 +20,7 @@ const colorMap: Record<string, string> = {
   secondary: "#a8a29e",
   light: "#FFF7ED",
   text: "#374151",
+  label: "#C2410C",
 };
 
 export const TextContainer = styled.p<TextProps>`

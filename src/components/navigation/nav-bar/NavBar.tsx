@@ -23,7 +23,7 @@ const NavBar = () => {
         <li><NavLink href="#how-it-works">How it Works</NavLink></li>
         <li><NavLink href="#cta">List Your Service</NavLink></li>
         <li><NavLink href="#contact">Contact Us</NavLink></li>
-        <li><NavButton>Sign Up Free</NavButton></li>
+        <li><NavButton>Sign Up</NavButton></li>
       </NavLinkContainer>
 
       {/* Mobile */}

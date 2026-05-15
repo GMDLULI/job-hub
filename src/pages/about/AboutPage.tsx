@@ -1,4 +1,3 @@
-import NavBar from '../../components/navigation/nav-bar/NavBar'
 import {
   PageWrapper,
   PageHero,
@@ -30,31 +29,23 @@ import {
   PageFooter,
 } from './styles/AboutPage.styles'
 
+import Gugulethu from '../../assets/images/Gugulethu.jpeg'
+import Sibonelo from '../../assets/images/Sibonelo.jpeg'
+
 const team = [
   {
-    name: 'Sipho Ndlovu',
-    role: 'Co-Founder & CEO',
-    avatar: 'https://randomuser.me/api/portraits/men/32.jpg',
-    bio: 'Sipho spent 10 years in township entrepreneurship before building ServeLink to solve the service-discovery problem he lived every day.',
+    name: 'Sibonelo Mnisi',
+    role: 'Founder & Marketing Lead',
+    avatar: `${Sibonelo}`,
+    bio: 'Sibonelo is a growth marketer and community builder with a passion for connecting people. He leads Pandapreneur’s outreach and partnerships, ensuring we stay rooted in the needs of South African service communities.',
   },
   {
-    name: 'Ayanda Mokoena',
-    role: 'Co-Founder & CTO',
-    avatar: 'https://randomuser.me/api/portraits/women/45.jpg',
-    bio: 'Full-stack engineer and former Google Developer Expert. Ayanda architects the platform that powers thousands of service connections monthly.',
+    name: 'Gugulethu Mdluli',
+    role: 'Co-Founder & Developer',
+    avatar: `${Gugulethu}`,
+    bio: 'Full-stack engineer, Former MTN Front End Developer. Gugulethu designs, builds, maintains, and architects the platform that powers thousands of service connections monthly.',
   },
-  {
-    name: 'Thabo Sithole',
-    role: 'Head of Growth',
-    avatar: 'https://randomuser.me/api/portraits/men/54.jpg',
-    bio: 'Growth strategist who scaled two South African startups to profitability. Thabo leads provider acquisition and community expansion.',
-  },
-  {
-    name: 'Nomsa Dlamini',
-    role: 'Head of Design',
-    avatar: 'https://randomuser.me/api/portraits/women/62.jpg',
-    bio: 'UX designer with a passion for building products that feel native to African communities — intuitive, fast, and beautiful.',
-  },
+  
 ]
 
 const values = [
@@ -77,9 +68,9 @@ const AboutPage = () => {
         <PageHeroOverlay />
         <PageHeroContent>
           <PageTag>Our Story</PageTag>
-          <PageHeroTitle>Built for South Africa,<br />by South Africans</PageHeroTitle>
+          <PageHeroTitle  variant='h1' color='light' size='lg' fontFamily='nunito'>Built for South Africa,<br />by South Africans</PageHeroTitle>
           <PageHeroSub>
-            ServeLink exists to close the gap between skilled local professionals
+            Pandapreneur exists to close the gap between skilled local professionals
             and the people who need them — one connection at a time.
           </PageHeroSub>
         </PageHeroContent>
@@ -90,23 +81,23 @@ const AboutPage = () => {
         <SectionInner>
           <TwoCol>
             <div>
-              <SectionLabel>Our Mission</SectionLabel>
-              <SectionTitle>Connecting communities through trusted services</SectionTitle>
+              <SectionLabel  variant='label' color='label' size='sm' fontFamily='nunito'>Our Mission</SectionLabel>
+              <SectionTitle variant='h2' color='primary' size='md' fontFamily='raleway'>Connecting communities through trusted services</SectionTitle>
             </div>
             <div>
-              <MissionText>
+              <MissionText variant='p' color='secondary' size='sm' fontFamily='nunito'>
                 South Africa is full of talented, hardworking professionals — nail
                 technicians, plumbers, tutors, builders, stylists — who struggle to
                 reach clients beyond their immediate circle. At the same time, millions
                 of people waste hours searching for reliable help through word-of-mouth
                 and scattered social media groups.
               </MissionText>
-              <MissionHighlight>
-                ServeLink solves both sides of that problem. We are a free, centralised
+              <MissionHighlight >
+                Pandapreneur solves both sides of that problem. We are a free, centralised
                 hub where anyone can find a verified local professional in minutes, and
                 where every provider gets the visibility they deserve.
               </MissionHighlight>
-              <MissionText>
+              <MissionText  variant='p' color='secondary' size='sm' fontFamily='nunito'>
                 We are proudly South African, built with a deep understanding of our
                 communities — their needs, their hustle, and their potential.
               </MissionText>
@@ -118,15 +109,15 @@ const AboutPage = () => {
       {/* ── VALUES ── */}
       <Section $bg="var(--bg, #fafaf9)">
         <SectionInner>
-          <SectionLabel>What We Stand For</SectionLabel>
-          <SectionTitle>Our values</SectionTitle>
-          <SectionBody>The principles that guide every decision we make.</SectionBody>
+          <SectionLabel  variant='label' color='label' size='sm' fontFamily='nunito'>What We Stand For</SectionLabel>
+          <SectionTitle variant='h2' color='primary' size='md' fontFamily='raleway'>Our values</SectionTitle>
+          <SectionBody variant='p' color='secondary' size='sm' fontFamily='nunito'>The principles that guide every decision we make.</SectionBody>
           <ValuesGrid>
             {values.map((v, i) => (
               <ValueCard key={i}>
                 <ValueIcon>{v.icon}</ValueIcon>
-                <ValueTitle>{v.title}</ValueTitle>
-                <ValueText>{v.text}</ValueText>
+                <ValueTitle variant='h3' color='primary' size='sm' fontFamily='raleway'>{v.title}</ValueTitle>
+                <ValueText variant='p' color='secondary' size='sm' fontFamily='nunito'>{v.text}</ValueText>
               </ValueCard>
             ))}
           </ValuesGrid>
@@ -136,23 +127,23 @@ const AboutPage = () => {
       {/* ── TEAM ── */}
       <Section $bg="#fff">
         <SectionInner>
-          <SectionLabel>The People Behind ServeLink</SectionLabel>
-          <SectionTitle>Meet the team</SectionTitle>
-          <SectionBody>A small, passionate crew obsessed with building South Africa's most trusted service marketplace.</SectionBody>
+          <SectionLabel  variant='label' color='label' size='sm' fontFamily='nunito'>The People Behind Pandapreneur</SectionLabel>
+          <SectionTitle variant='h2' color='primary' size='md' fontFamily='raleway'>Meet the team</SectionTitle>
+          <SectionBody variant='p' color='secondary' size='sm' fontFamily='nunito'>A small, passionate crew obsessed with building South Africa's most trusted service marketplace.</SectionBody>
           <TeamGrid>
             {team.map((member, i) => (
               <TeamCard key={i}>
                 <TeamAvatar src={member.avatar} alt={member.name} />
                 <TeamName>{member.name}</TeamName>
-                <TeamRole>{member.role}</TeamRole>
-                <TeamBio>{member.bio}</TeamBio>
+                <TeamRole variant='span' color='label' size='sm' fontFamily='nunito'>{member.role}</TeamRole>
+                <TeamBio variant='p' color='secondary' size='sm' fontFamily='nunito'>{member.bio}</TeamBio>
               </TeamCard>
             ))}
           </TeamGrid>
         </SectionInner>
       </Section>
 
-      <PageFooter>© 2026 ServeLink · Built for local service communities across South Africa</PageFooter>
+      <PageFooter>© 2026 Pandapreneur · Built for local service communities across South Africa</PageFooter>
 
     </PageWrapper></>
   )
