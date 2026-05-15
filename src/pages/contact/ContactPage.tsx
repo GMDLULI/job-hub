@@ -14,7 +14,6 @@ import {
   FormTitle,
   FormSubtitle,
   FormGroup,
-  FormLabel,
   FormInput,
   FormSelect,
   FormTextarea,
@@ -23,22 +22,12 @@ import {
   InfoSide,
   InfoCard,
   InfoIcon,
-  InfoTitle,
   InfoText,
   InfoLink,
   Divider,
-  FaqSection,
-  FaqInner,
-  FaqLabel,
-  FaqTitle,
-  FaqGrid,
-  FaqItem,
-  FaqQ,
-  FaqA,
   PageFooter,
 } from './styles/ContactPage.styles'
 import Text  from '../../components/display/text/Text'
-import Pin from '../../assets/icons/pin-1.png'
 import instagram from '../../assets/icons/instagram.png'
 import mail from '../../assets/icons/communication.png'
 import phone from '../../assets/icons/call.png'

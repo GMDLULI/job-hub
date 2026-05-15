@@ -26,15 +26,12 @@ import {
   WhyCard, 
   WhyGrid, 
   WhyIcon, 
-  WhySection, 
-  WhyText, 
+  WhySection,  
   WhyTitle } from './styles/HomePage.styles'
 import Text from '../../components/display/text/Text'
-import SearchBar from '../../components/navigation/search-bar/SearchBar'
 import ServiceCard from '../../components/display/service-card/ServiceCard'
 import ProviderView from '../providers/Providers'
 import type { ProviderProps } from '../providers/Providers.types'
-import NavBar from '../../components/navigation/nav-bar/NavBar'
 import magnifyingGlass from '../../assets/icons/magnifying-glass.png'
 import checkIcon from '../../assets/icons/check-list.png'
 import lightIcon from '../../assets/icons/thunder.png'
