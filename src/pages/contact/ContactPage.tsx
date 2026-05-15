@@ -32,32 +32,6 @@ import instagram from '../../assets/icons/instagram.png'
 import mail from '../../assets/icons/communication.png'
 import phone from '../../assets/icons/call.png'
 
-// const faqs = [
-//   {
-//     q: 'Is Pandapreneur free to use?',
-//     a: 'Yes — browsing profiles and contacting providers is completely free for clients. Providers can also list their services at no cost during our launch period.',
-//   },
-//   {
-//     q: 'How do I list my services as a provider?',
-//     a: 'Send us a message using the contact form above and select "Become a Provider". Our team will reach out to get your profile set up.',
-//   },
-//   {
-//     q: 'How are providers verified?',
-//     a: 'We manually review each provider application and collect proof of work where applicable. Client ratings and reviews then maintain ongoing quality on the platform.',
-//   },
-//   {
-//     q: 'Which areas does Pandapreneur currently cover?',
-//     a: 'We are live across all 9 provinces of South Africa, with the strongest coverage in Gauteng, the Western Cape, and KwaZulu-Natal.',
-//   },
-//   {
-//     q: 'I found an issue on the platform. How do I report it?',
-//     a: 'Use the contact form and select "Report an Issue". Our team aims to respond within one business day.',
-//   },
-//   {
-//     q: 'Can I suggest a new service category?',
-//     a: 'Absolutely — we love hearing from the community. Select "General Enquiry" in the form and tell us what category you\'d like to see added.',
-//   },
-// ]
 
 const ContactPage = () => {
   const [submitted, setSubmitted] = useState(false)
@@ -190,16 +164,6 @@ const ContactPage = () => {
               <InfoLink href="tel:+2797288652">+27 79 728 8652</InfoLink>
             </InfoCard>
 
-            {/* <InfoCard>
-              <InfoIcon src={Pin} alt="Office Location" ></InfoIcon>
-              <Text variant='label' fontFamily='raleway' size='sm' color='text'>Our Office</Text>
-              <InfoText>
-                The Innovation Hub<br />
-                Mark Shuttleworth Street<br />
-                Pretoria, Gauteng, 0087
-              </InfoText>
-            </InfoCard> */}
-
             <InfoCard>
               <InfoIcon src={instagram} alt="Social Media" ></InfoIcon>
               <Text variant='label' fontFamily='raleway' size='sm' color='text'>Social Media</Text>
@@ -212,22 +176,6 @@ const ContactPage = () => {
       </ContactLayout>
 
       <Divider />
-
-      {/* ── FAQ ── */}
-      {/* <FaqSection>
-        <FaqInner>
-          <FaqLabel>Quick Answers</FaqLabel>
-          <FaqTitle>Frequently asked questions</FaqTitle>
-          <FaqGrid>
-            {faqs.map((faq, i) => (
-              <FaqItem key={i}>
-                <FaqQ>{faq.q}</FaqQ>
-                <FaqA>{faq.a}</FaqA>
-              </FaqItem>
-            ))}
-          </FaqGrid>
-        </FaqInner>
-      </FaqSection> */}
 
       <PageFooter>© 2026 Pandapreneur · Built for local service communities across South Africa</PageFooter>
 
