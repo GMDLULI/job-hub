@@ -1,22 +1,38 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, BrowserRouter } from "react-router-dom";
 import HomePage from './pages/home/HomePage'
-import AboutPage from "./pages/about/AboutPage";
 import ContactPage from "./pages/contact/ContactPage";
 import NavBar from "./components/navigation/nav-bar/NavBar";
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import AboutPage from "./pages/about/AboutPage";
+
+const ScrollToHash = () => {
+  const { hash } = useLocation();
+
+  useEffect(() => {
+    if (!hash) return;
+    const el = document.querySelector(hash);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  }, [hash]);
+
+  return null;
+};
 
 const App = () => {
 
   return (
 
         <>
-        <NavBar />
-        <Router>
+       <BrowserRouter>
+          <ScrollToHash />
+          <NavBar />
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/about" element={<AboutPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/about" element={<AboutPage />} />
+
           </Routes>
-         </Router>
+        </BrowserRouter>
     </>
   );
 

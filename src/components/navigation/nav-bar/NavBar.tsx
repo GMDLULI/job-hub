@@ -7,23 +7,26 @@ import {
   NavLinkContainer, 
   BurgerButton, 
   MobileMenu, 
-  MobileNavLink } from './styles/NavBar.styles';
+  MobileNavLink, 
+  } from './styles/NavBar.styles';
 import pandaLogo from "../../../assets/images/pandapreneur-logo.jpeg"
-
+import { useNavigate } from "react-router-dom";
 const NavBar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+    const navigate = useNavigate()
+
 
   return (
     <NavBarContainer>
-      <LogoContainer href="./"><img src={pandaLogo} /></LogoContainer>
+      <LogoContainer to="/"><img src={pandaLogo} /></LogoContainer>
 
       {/* Desktop */}
       <NavLinkContainer>
-        <li><NavLink href="#categories">Browse Services</NavLink></li>
-        <li><NavLink href="#how-it-works">How it Works</NavLink></li>
-        <li><NavLink href="#cta">List Your Service</NavLink></li>
-        <li><NavLink href="#contact">Contact Us</NavLink></li>
-        <li><NavButton>Sign Up</NavButton></li>
+        <li><NavLink to="/about">About Us</NavLink></li>
+        <li><NavLink to="/#how-it-works">How it Works</NavLink></li>
+        <li><NavLink to="/#categories">Our Services</NavLink></li>
+        <li><NavLink to="/contact">Contact Us</NavLink></li>
+        <li><NavButton onClick={() => navigate("/sign-up")}>Sign Up</NavButton></li>
       </NavLinkContainer>
 
       {/* Mobile */}
@@ -33,11 +36,11 @@ const NavBar = () => {
 
       {menuOpen && (
         <MobileMenu>
-          <li><MobileNavLink href="#categories" onClick={() => setMenuOpen(false)}>Browse Services</MobileNavLink></li>
-          <li><MobileNavLink href="#how-it-works" onClick={() => setMenuOpen(false)}>How it Works</MobileNavLink></li>
-          <li><MobileNavLink href="#cta" onClick={() => setMenuOpen(false)}>List Your Service</MobileNavLink></li>
-          <li><MobileNavLink href="#contact" onClick={() => setMenuOpen(false)}>Contact Us</MobileNavLink></li>
-          <li><NavButton style={{ width: '100%' }}>Sign Up Free</NavButton></li>
+          <li><MobileNavLink to="/about" onClick={() => setMenuOpen(false)}>About Us</MobileNavLink></li>
+          <li><MobileNavLink to="/#how-it-works" onClick={() => setMenuOpen(false)}>How it Works</MobileNavLink></li>
+          <li><MobileNavLink to="/#categories" onClick={() => setMenuOpen(false)}>Our Services</MobileNavLink></li>
+          <li><MobileNavLink to="/contact" onClick={() => setMenuOpen(false)}>Contact Us</MobileNavLink></li>
+          <li><NavButton onClick={() => navigate("/sign-up")} style={{ width: '100%' }}>Sign Up</NavButton></li>
         </MobileMenu>
       )}
     </NavBarContainer>
