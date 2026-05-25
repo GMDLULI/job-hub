@@ -99,7 +99,7 @@ export const FormTitle = styled(Text)`
 
 export const FormSubtitle = styled.p`
   font-size: 14px;
-  color: var(--muted, #6B7280);
+  color: #6B7280;
   margin-bottom: 32px;
 `
 
