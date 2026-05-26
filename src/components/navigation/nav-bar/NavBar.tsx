@@ -26,7 +26,7 @@ const NavBar = () => {
         <li><NavLink to="/#how-it-works">How it Works</NavLink></li>
         <li><NavLink to="/#categories">Our Services</NavLink></li>
         <li><NavLink to="/contact">Contact Us</NavLink></li>
-        <li><NavButton onClick={() => navigate("/sign-up")}>Join Now</NavButton></li>
+        <li><NavButton onClick={() => navigate("/sign-in")}>Join Now</NavButton></li>
       </NavLinkContainer>
 
       {/* Mobile */}
@@ -40,7 +40,7 @@ const NavBar = () => {
           <li><MobileNavLink to="/#how-it-works" onClick={() => setMenuOpen(false)}>How it Works</MobileNavLink></li>
           <li><MobileNavLink to="/#categories" onClick={() => setMenuOpen(false)}>Our Services</MobileNavLink></li>
           <li><MobileNavLink to="/contact" onClick={() => setMenuOpen(false)}>Contact Us</MobileNavLink></li>
-          <li><NavButton onClick={() => navigate("/sign-up")} style={{ width: '100%' }}>Join Now</NavButton></li>
+          <li><NavButton onClick={() => navigate("/sign-in")} style={{ width: '100%' }}>Join Now</NavButton></li>
         </MobileMenu>
       )}
     </NavBarContainer>

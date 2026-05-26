@@ -5,6 +5,7 @@ import NavBar from "./components/navigation/nav-bar/NavBar";
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import AboutPage from "./pages/about/AboutPage";
+import SignIn from "./pages/sign-in/SignIn";
 
 const ScrollToHash = () => {
   const { hash } = useLocation();
@@ -30,7 +31,7 @@ const App = () => {
             <Route path="/" element={<HomePage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/about" element={<AboutPage />} />
-
+            <Route path="/sign-in" element={<SignIn />} />
           </Routes>
         </BrowserRouter>
     </>
