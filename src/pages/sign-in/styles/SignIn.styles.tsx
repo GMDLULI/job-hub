@@ -54,6 +54,12 @@ export const Avatar = styled.label`
   }
 `;
 
+export const ErrorText = styled.p`
+  color: #ef4444;
+  font-size: 14px;
+  margin-top: 4px;
+`;
+
 export const HiddenInput = styled.input`
   display: none;
 `;
