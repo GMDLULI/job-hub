@@ -37,12 +37,15 @@ import checkIcon from '../../assets/icons/check-list.png'
 import lightIcon from '../../assets/icons/thunder.png'
 import pinIcon from '../../assets/icons/pin.png'
 
+import supabase from '../../config/SupaBaseConfig'
+
 
 
 
 const HomePage = () => {
   const [selectedCategory, setSelectedCategory] = useState<ProviderProps | null>(null)
   const navigate = useNavigate()
+  console.log('Supabase client:', supabase) // Debugging line to check if supabase is defined
 
   if (selectedCategory) {
     return (
