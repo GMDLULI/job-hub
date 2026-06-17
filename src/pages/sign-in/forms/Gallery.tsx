@@ -7,7 +7,6 @@ import deleteIcon from '../../../assets/icons/delete.png'
 type GalleryProps = {
     images: File[];         
     handleImageUpload: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    openFilePicker: () => void;
     deleteImage: (index: number) => void;
 }   
 const Gallery = ({

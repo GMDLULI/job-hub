@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react'
 import type { Service } from '../SignIn.types'
+import Supabase, { supabase } from '../../../config/SupaBaseConfig'
 
 const useSignIn = () => {
   const [step, setStep] = useState<number>(1)
@@ -78,9 +79,68 @@ const useSignIn = () => {
     form.email &&
     form.location
   ) {
+
+    // 1. Sign up the user
+    const {data : authData, error:authError} = Supabase.auth.getUser()
+    if(authError) {
+      console.error('Error fetching user:', authError)
+      email: form.email
+      password:'defaultpassword'
+    }
+    
+    if (authError) { setShowError(true); return; }
+
+      // 2. Upload avatar if present
+
+    let avatarUrl = ''
+    if (images.length > 0) {
+      const file = images[0]
+      const { data } = Supabase.storage
+        .from('provider-assets')
+        .upload(`avatar/${authData.user!.id}`, file)
+      avatarUrl = supabase.storage.from('provider-assets').getPublicUrl(data!.path).data.publicUrl
     setSubmitted(true);
     return;
   }
+
+  // 3. Insert provider row
+  const { data: provider, error: provError } = await supabase
+    .from('providers')
+    .insert({
+      user_id: authData.user!.id,
+      name: form.fullName,
+      title: form.title,
+      about: form.about,
+      email: form.email,
+      phone: form.number,
+      location: form.location,
+      avatar_url: avatarUrl,
+      category: form.service,
+    })
+    .select()
+    .single()
+  if (provError) { setShowError(true); return }
+
+    // 4. Insert services
+  await supabase.from('services').insert(
+    services.map(s => ({
+      provider_id: provider.id,
+      name: s.service,
+      price: s.price,
+      duration: s.duration,
+    }))
+  )
+
+  // 5. Upload gallery images
+  for (const img of images) {
+    const { data } = await supabase.storage
+      .from('provider-assets')
+      .upload(`gallery/${provider.id}/${img.name}`, img)
+    const url = supabase.storage.from('provider-assets').getPublicUrl(data!.path).data.publicUrl
+    await supabase.from('gallery').insert({ provider_id: provider.id, image_url: url })
+  }
+
+
 
   // Validation failed
   console.log(step)

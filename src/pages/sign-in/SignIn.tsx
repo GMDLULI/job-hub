@@ -25,14 +25,12 @@ export const SignIn = () => {
     form,
     services,
     showError,
-    fileInputRef,
     handleServiceChange,
     deleteService,
     handleNext,
     handleChange,
     handleImageChange,
     handleBack,
-    openFilePicker,
     deleteImage,
     addService,
   
@@ -53,7 +51,7 @@ export const SignIn = () => {
       case 3:
         return (
           <Gallery 
-            images={[]} handleImageUpload={handleImageChange} openFilePicker={openFilePicker}  fileInputRef={fileInputRef} deleteImage={deleteImage} />
+            images={[]} handleImageUpload={handleImageChange} deleteImage={deleteImage} />
         )
 
       case 4:
