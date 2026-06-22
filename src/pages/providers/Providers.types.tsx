@@ -11,11 +11,14 @@ export interface Provider {
   desc: string
   stars: string
   badge?: string
-   about?: string
+  about?: string
   location?: string
   mapUrl?: string
   phone?: string
   email?: string
+  instagram?:string;
+  twitter?:string;
+  facebook?:string;
   services?: ProviderService[]
   gallery?: string[]
 }

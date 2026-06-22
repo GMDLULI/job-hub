@@ -1,7 +1,9 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {
+  Avatar,
   ButtonsContainer,
   ErrorText,
+  InfoContainer,
   SignInContainer,
   SignInFormContainer,
   SignInHeading,
@@ -25,6 +27,10 @@ export const SignIn = () => {
     form,
     services,
     showError,
+    submitting,
+    submitted,
+    images,
+    avatarPreview,
     handleServiceChange,
     deleteService,
     handleNext,
@@ -36,22 +42,34 @@ export const SignIn = () => {
   
   } = useSignIn()
 
+
+
   const renderStep = () => {
     switch (step) {
       case 1:
         return (
-          <Profile form={form} handleChange={handleChange} handleImageChange={handleImageChange}/>
+          <Profile 
+          avatarPreview={avatarPreview}
+          form={form} 
+          handleChange={handleChange} 
+          handleImageChange={handleImageChange}/>
         )
 
       case 2:
         return (
-         <Services services={services} handleServiceChange={handleServiceChange} deleteService={deleteService} addService={addService}/>
+         <Services 
+          services={services} 
+          handleServiceChange={handleServiceChange} 
+          deleteService={deleteService} 
+          addService={addService}/>
         )
 
       case 3:
         return (
           <Gallery 
-            images={[]} handleImageUpload={handleImageChange} deleteImage={deleteImage} />
+            images={images} 
+            handleImageUpload={handleImageChange} 
+            deleteImage={deleteImage} />
         )
 
       case 4:
@@ -64,6 +82,18 @@ export const SignIn = () => {
         return null
     }
   }
+  if (submitted) {
+  return (
+    <SignInContainer>
+      <InfoContainer>
+      <Text variant="h1" color="secondary" fontFamily="nunito">You're live!</Text>
+      <Text variant="p" color="primary" fontFamily="nunito">
+        Your profile has been submitted. Check your email to confirm your account.
+      </Text>
+      </InfoContainer>
+    </SignInContainer>
+  )
+}
 
   return (
     <SignInContainer>
@@ -100,7 +130,9 @@ export const SignIn = () => {
         {showError && <ErrorText >Fill in the missing fields</ErrorText>}
         <ButtonsContainer>
           <SubmitButton onClick={handleBack}>Back</SubmitButton>
-          <SubmitButton onClick={handleNext}>Next</SubmitButton>
+          <SubmitButton onClick={handleNext}>{submitting ? 'Submitting...' : step === 4 ? 'Submit' : 'Next'}
+
+          </SubmitButton>
         </ButtonsContainer>
       </SignInFormContainer>
     </SignInContainer>

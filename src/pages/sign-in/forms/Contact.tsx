@@ -2,13 +2,16 @@ import React from 'react'
 import { FormGroup } from '../../contact/styles/ContactPage.styles'
 import { FieldGroup, FormInput, InfoContainer } from '../styles/SignIn.styles';
 import  Text  from '../../../components/display/text/Text';
-import useSignIn from '../hooks/useSignIn';
 
 type ContactProps = {
   form: {
     number: string;     
     email: string;
+    password: string;
     location: string;
+    instagram: string;
+    twitter: string;
+    facebook:string;
     };
     handleChange: (
       e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void;
@@ -49,6 +52,47 @@ const Contact = ({form, handleChange}: ContactProps) => {
             onChange={handleChange}
             />
         </FormGroup>
+
+        <FieldGroup>
+            <Text variant="label" fontFamily="raleway" size="sm" color="text">
+             Password *
+            </Text>
+            <input
+                type="password"
+                name="password"
+                value={form.password}
+                onChange={handleChange}
+                placeholder="Create a password"
+                />
+        </FieldGroup>
+
+         <FieldGroup>
+            <Text variant="label" fontFamily="raleway" size="sm" color="text">
+             socials *
+            </Text>
+            <input
+                type="instagram"
+                name="instagram"
+                value={form.instagram}
+                onChange={handleChange}
+                placeholder="insert you instagram handle"
+                />
+            {/* <input
+                type="instagram"
+                name="instagram"
+                value={form.twitter}
+                onChange={handleChange}
+                placeholder="insert you Twitter handle"
+                />
+            <input
+                type="instagram"
+                name="instagram"
+                value={form.facebook}
+                onChange={handleChange}
+                placeholder="insert you facebook handle"
+                /> */}
+        </FieldGroup>
+
 
         <FormGroup>
             <Text variant="label" fontFamily="raleway" size="sm" color="text">

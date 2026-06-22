@@ -1,6 +1,6 @@
 import React from "react"
 import services from "../../../data/ServicesData.json"
-import type { ServiceCardProps, ServiceItem } from "./ServiceCard.types"
+import type { ServiceCardProps } from "./ServiceCard.types"
 
 import {
   ServiceContainer,
@@ -10,13 +10,14 @@ import {
   ServiceName,
   ServiceCount
 } from "./styles/ServiceCard.styles"
+import Text from "../text/Text"
 
+const ServiceCard: React.FC<ServiceCardProps> = ({services, loading,  onSelectCategory }) => {
 
-const ServiceCard: React.FC<ServiceCardProps> = ({ onSelectCategory }) => {
-
+  if (loading) return <Text variant='p' >Loading services...</Text>
   return (
     <ServiceContainer>
-      {services.map((service: ServiceItem, index: number) => (
+      {services.map((service, index: number) => (
         <StyledServiceCard
           key={index}
           role="button"

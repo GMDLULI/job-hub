@@ -38,6 +38,7 @@ import lightIcon from '../../assets/icons/thunder.png'
 import pinIcon from '../../assets/icons/pin.png'
 
 import supabase from '../../config/SupaBaseConfig'
+import { useProviders } from '../sign-in/hooks/useProviders';
 
 
 
@@ -46,7 +47,7 @@ const HomePage = () => {
   const [selectedCategory, setSelectedCategory] = useState<ProviderProps | null>(null)
   const navigate = useNavigate()
   console.log('Supabase client:', supabase) // Debugging line to check if supabase is defined
-
+  const { categories, loading } = useProviders()
   if (selectedCategory) {
     return (
       <ProviderView
@@ -84,7 +85,7 @@ const HomePage = () => {
             <Text variant='h2' color='primary' size='lg' fontFamily='raleway'>Browse by Category</Text>
             <SectionHeadP variant='p' fontFamily='raleway' size='md'>Click a category to explore available professionals</SectionHeadP>
           </SectionHead>
-          <ServiceCard  onSelectCategory={setSelectedCategory}/>
+          <ServiceCard services={categories} loading={loading} onSelectCategory={setSelectedCategory}/>
         </MainPage>
       </Categories>
 

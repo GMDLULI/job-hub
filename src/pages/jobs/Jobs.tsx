@@ -41,6 +41,12 @@ import {
   BookButton,
   JobFooter,
 } from "./styles/Jobs.styles"
+import instagram from "../../assets/icons/instagram.png"
+import pin from "../../assets/icons/pin-1.png"
+import whatsapp from "../../assets/icons/whatsapp.png"
+import email from "../../assets/icons/communication.png"
+import twitter from "../../assets/icons/twitter.png"
+import facebook from "../../assets/icons/facebook.png"
 
 interface Props {
   provider: Provider
@@ -131,7 +137,7 @@ const JobView: React.FC<Props> = ({ provider, accent, categoryName, goBack }) =>
               <SectionLabel $accent={accent}>Where to Find Me</SectionLabel>
               <SectionTitle>Location</SectionTitle>
               <ContactRow>
-                <ContactIcon>📍</ContactIcon>
+                <ContactIcon>{pin}</ContactIcon>
                 <ContactText>{provider.location}</ContactText>
               </ContactRow>
               {provider.mapUrl && (
@@ -172,20 +178,38 @@ const JobView: React.FC<Props> = ({ provider, accent, categoryName, goBack }) =>
             </SectionLabel>
             {provider.phone && (
               <ContactRow>
-                <ContactIcon>📞</ContactIcon>
+                <ContactIcon>{whatsapp}</ContactIcon>
                 <ContactLink href={`tel:${provider.phone}`}>{provider.phone}</ContactLink>
               </ContactRow>
             )}
             {provider.email && (
               <ContactRow>
-                <ContactIcon>✉️</ContactIcon>
+                <ContactIcon>{email}</ContactIcon>
                 <ContactLink href={`mailto:${provider.email}`}>{provider.email}</ContactLink>
               </ContactRow>
             )}
             {provider.location && (
               <ContactRow>
-                <ContactIcon>📍</ContactIcon>
+                <ContactIcon>{pin}</ContactIcon>
                 <ContactText>{provider.location}</ContactText>
+              </ContactRow>
+            )}
+             {provider.instagram && (
+              <ContactRow>
+                <ContactIcon>{instagram}</ContactIcon>
+                <ContactText>{provider.instagram}</ContactText>
+              </ContactRow>
+            )}
+             {provider.twitter && (
+              <ContactRow>
+                <ContactIcon>{twitter}</ContactIcon>
+                <ContactText>{provider.twitter}</ContactText>
+              </ContactRow>
+            )}
+             {provider.facebook && (
+              <ContactRow>
+                <ContactIcon>{facebook}</ContactIcon>
+                <ContactText>{provider.facebook}</ContactText>
               </ContactRow>
             )}
           </ContactCard>

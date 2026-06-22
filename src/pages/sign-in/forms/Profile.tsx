@@ -13,6 +13,7 @@ import useSignIn from '../hooks/useSignIn';
     subject: string;
     about: string;
   };
+  avatarPreview: string | null
   handleChange: (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
@@ -26,9 +27,11 @@ import useSignIn from '../hooks/useSignIn';
 
 const Profile = ({
   form,
+  avatarPreview,
   handleChange,
   handleImageChange,
 }: ProfileProps) => {
+
     return (
           <FieldGroup>
             <Text variant="h2" color="primary" fontFamily="nunito">
@@ -40,7 +43,7 @@ const Profile = ({
 
             <AvatarContainer>
               <Avatar htmlFor="avatar-upload">
-                <img src={user} alt="User Avatar" />
+                <img src={avatarPreview ?? user} alt="User Avatar" />
               </Avatar>
               <HiddenInput
                 id="avatar-upload"
