@@ -12,7 +12,7 @@ import useSignIn from '../hooks/useSignIn';
     title: string;
     subject: string;
     about: string;
-  };
+  }
   avatarPreview: string | null
   handleChange: (
     e: React.ChangeEvent<

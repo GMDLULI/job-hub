@@ -70,27 +70,27 @@ const Contact = ({form, handleChange}: ContactProps) => {
             <Text variant="label" fontFamily="raleway" size="sm" color="text">
              socials *
             </Text>
-            <input
+            <FormInput
                 type="instagram"
                 name="instagram"
                 value={form.instagram}
                 onChange={handleChange}
                 placeholder="insert you instagram handle"
                 />
-            {/* <input
-                type="instagram"
-                name="instagram"
+            <FormInput
+                type="twitter"
+                name="twitter"
                 value={form.twitter}
                 onChange={handleChange}
                 placeholder="insert you Twitter handle"
                 />
-            <input
-                type="instagram"
-                name="instagram"
+            <FormInput
+                type="facebook"
+                name="facebook"
                 value={form.facebook}
                 onChange={handleChange}
                 placeholder="insert you facebook handle"
-                /> */}
+                />
         </FieldGroup>
 
 

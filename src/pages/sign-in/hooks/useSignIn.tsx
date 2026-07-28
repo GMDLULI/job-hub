@@ -25,8 +25,7 @@ const useSignIn = () => {
   const [services, setServices] = useState<Service[]>([
     {
       service: '',
-      price: '',
-      duration: '',
+      price: ''
     },
   ])
 
@@ -36,24 +35,96 @@ const useSignIn = () => {
 
   const [submitting, setSubmitting] = useState(false)
 
+// const handleSubmit = async () => {
+//   setSubmitting(true)
+
+//   try {
+//     // 1 — Create auth account
+//     const { data: authData, error: authError } = await supabase.auth.signUp({
+//       email: form.email,
+//       password: form.password,
+//     })
+//     if (authError) throw authError
+
+//     const userId = authData.user!.id
+
+//     // 2 — Upload avatar (if one was chosen)
+//     let avatarUrl = ''
+//     if (avatarFile) {
+//       const ext = avatarFile.name.split('.').pop()
+//       const path = `avatars/${userId}.${ext}`
+//       const { data: uploaded, error: uploadError } = await supabase.storage
+//         .from('provider-assets')
+//         .upload(path, avatarFile, { upsert: true })
+//       if (uploadError) throw uploadError
+//       avatarUrl = supabase.storage
+//         .from('provider-assets')
+//         .getPublicUrl(uploaded.path).data.publicUrl
+//     }
+
+//     // 3 — Insert provider row
+//     const { data: provider, error: provError } = await supabase
+//       .from('providers')
+//       .insert({
+//         user_id: userId,
+//         name: form.fullName,
+//         title: form.title,
+//         about: form.about,
+//         email: form.email,
+//         phone: form.number,
+//         location: form.location,
+//         avatar_url: avatarUrl,
+//         category: form.service,
+//       })
+//       .select()
+//       .single()
+//     if (provError) throw provError
+
+//     // 4 — Insert services (batch insert)
+//     if (services.length > 0) {
+//       const { error: svcError } = await supabase.from('services').insert(
+//         services.map(s => ({
+//           provider_id: provider.id,
+//           name: s.service,
+//           price: s.price,
+//         }))
+//       )
+//       if (svcError) throw svcError
+//     }
+
+//     // 5 — Upload gallery images and insert rows
+//     for (const img of images) {
+//       const path = `gallery/${provider.id}/${Date.now()}-${img.name}`
+//       const { data: uploaded, error: imgError } = await supabase.storage
+//         .from('provider-assets')
+//         .upload(path, img)
+//       if (imgError) throw imgError
+//       const url = supabase.storage
+//         .from('provider-assets')
+//         .getPublicUrl(uploaded.path).data.publicUrl
+//       await supabase.from('gallery').insert({ provider_id: provider.id, image_url: url })
+//     }
+
+//     setSubmitted(true)
+//     const { data, error } = await supabase.storage.getBucket('provider-assets')
+//     console.log(data, error)
+
+//   } catch (err) {
+//     console.error('Registration failed:', err)
+//     setShowError(true)
+//   } finally {
+//     setSubmitting(false)
+//   }
+// }
 const handleSubmit = async () => {
   setSubmitting(true)
 
   try {
-    // 1 — Create auth account
-    const { data: authData, error: authError } = await supabase.auth.signUp({
-      email: form.email,
-      password: form.password,
-    })
-    if (authError) throw authError
-
-    const userId = authData.user!.id
-
     // 2 — Upload avatar (if one was chosen)
     let avatarUrl = ''
     if (avatarFile) {
       const ext = avatarFile.name.split('.').pop()
-      const path = `avatars/${userId}.${ext}`
+      const path = `avatars/${Date.now()}.${ext}`
       const { data: uploaded, error: uploadError } = await supabase.storage
         .from('provider-assets')
         .upload(path, avatarFile, { upsert: true })
@@ -63,11 +134,10 @@ const handleSubmit = async () => {
         .getPublicUrl(uploaded.path).data.publicUrl
     }
 
-    // 3 — Insert provider row
+    // 3 — Insert provider row (no user_id for now)
     const { data: provider, error: provError } = await supabase
       .from('providers')
       .insert({
-        user_id: userId,
         name: form.fullName,
         title: form.title,
         about: form.about,
@@ -81,20 +151,19 @@ const handleSubmit = async () => {
       .single()
     if (provError) throw provError
 
-    // 4 — Insert services (batch insert)
+    // 4 — Insert services
     if (services.length > 0) {
       const { error: svcError } = await supabase.from('services').insert(
         services.map(s => ({
           provider_id: provider.id,
           name: s.service,
           price: s.price,
-          duration: s.duration,
         }))
       )
       if (svcError) throw svcError
     }
 
-    // 5 — Upload gallery images and insert rows
+    // 5 — Upload gallery images
     for (const img of images) {
       const path = `gallery/${provider.id}/${Date.now()}-${img.name}`
       const { data: uploaded, error: imgError } = await supabase.storage
@@ -147,9 +216,9 @@ const handleSubmit = async () => {
     services.every(
       service =>
         service.service &&
-        service.price &&
-        service.duration
-    )
+        service.price
+    )    
+
   ) {
     setStep(3);
     return;
@@ -160,19 +229,11 @@ const handleSubmit = async () => {
     return;
   }
 
-  if (
-    step === 4 &&
-    form.number &&
-    form.email &&
-    form.password &&
-    form.location
-  ) {
-    await handleSubmit()
-  }
-    // Validation failed
-    console.log(step)
-    setShowError(true);
-    return
+  if (step === 4 && form.number && form.email && form.password && form.location) {
+  await handleSubmit()
+  return  // ← stops execution here
+}
+
 
 }
 
@@ -210,7 +271,7 @@ const handleSubmit = async () => {
   // ── Services ───────────────────────────────────────────────────────────────
 
   const addService = () => {
-    setServices(prev => [...prev, { service: '', price: '', duration: '' }])
+    setServices(prev => [...prev, { service: '', price: '' }])
   }
 
   const deleteService = (index: number) => {

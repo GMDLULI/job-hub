@@ -35,6 +35,7 @@ export const SignIn = () => {
     deleteService,
     handleNext,
     handleChange,
+    handleImageUpload, 
     handleImageChange,
     handleBack,
     deleteImage,
@@ -68,7 +69,7 @@ export const SignIn = () => {
         return (
           <Gallery 
             images={images} 
-            handleImageUpload={handleImageChange} 
+            handleImageUpload={handleImageUpload} 
             deleteImage={deleteImage} />
         )
 

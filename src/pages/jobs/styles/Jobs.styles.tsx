@@ -290,10 +290,11 @@ export const ContactRow = styled.div`
   }
 `
 
-export const ContactIcon = styled.span`
-  font-size: 16px;
-  flex-shrink: 0;
-  margin-top: 1px;
+export const ContactIcon = styled.img`
+  font-size: 24px;
+  margin-bottom: 10px;
+  width: 28px;
+  height: 28px;
 `
 
 export const ContactText = styled.span`

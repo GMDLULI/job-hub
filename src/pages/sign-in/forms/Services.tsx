@@ -64,19 +64,6 @@ const Services = ({
                 </FormGroup>
 
                 <FormGroup>
-                <Text variant="label" fontFamily="raleway" size="sm" color="text">
-                    Duration *
-                </Text>
-                <FormInputNumber
-                    type="number"
-                    name="duration"
-                    placeholder="60"
-                    value={item.duration}
-                    onChange={e => handleServiceChange(index, e)}
-                />
-                </FormGroup>
-
-                <FormGroup>
                 <DeleteButton onClick={() => deleteService(index)}>
                     <DeleteImage src={deleteIcon} alt="Delete" />
                 </DeleteButton>
