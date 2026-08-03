@@ -31,6 +31,7 @@ import Text  from '../../components/display/text/Text'
 import instagram from '../../assets/icons/instagram.png'
 import mail from '../../assets/icons/communication.png'
 import phone from '../../assets/icons/call.png'
+import supabase from '../../config/SupaBaseConfig'
 
 // const faqs = [
 //   {
@@ -68,16 +69,42 @@ const ContactPage = () => {
     message: '',
   })
 
+  const [submitting, setSubmitting] = useState(false)
+  const [error, setError] = useState(false)
+
+  const handleSubmit = async (e: React.MouseEvent) => {
+      e.preventDefault()
+      if (!form.name || !form.email || !form.message) return
+
+      setSubmitting(true)
+      setError(false)
+
+      try {
+        const { error: fnError } = await supabase.functions.invoke("send-contact-email", {
+          body: {
+            name: form.name,
+            email: form.email,
+            subject: form.subject,
+            message: form.message,
+          },
+        })
+
+        if (fnError) throw fnError
+        setSubmitted(true)
+
+      } catch (err) {
+        console.error("Failed to send message:", err)
+        setError(true)
+        console.log(error, submitting)
+      } finally {
+        setSubmitting(false)
+      }
+    }
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     setForm({ ...form, [e.target.name]: e.target.value })
-  }
-
-  const handleSubmit = (e: React.MouseEvent) => {
-    e.preventDefault()
-    if (!form.name || !form.email || !form.message) return
-    setSubmitted(true)
   }
 
   return (

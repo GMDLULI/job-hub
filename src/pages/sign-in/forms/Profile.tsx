@@ -3,14 +3,13 @@ import { Avatar, AvatarContainer, FieldGroup, FieldRow, FormInput, FormSelect, F
 import { FormGroup } from '../../contact/styles/ContactPage.styles';
 import  Text  from '../../../components/display/text/Text';
 import user from '../../../assets/icons/user.png'
-import useSignIn from '../hooks/useSignIn';
 
    
   type ProfileProps = {
   form: {
     fullName: string;
     title: string;
-    subject: string;
+    service: string;
     about: string;
   }
   avatarPreview: string | null
@@ -83,8 +82,7 @@ const Profile = ({
               <Text variant="label" fontFamily="raleway" size="sm" color="text">
                 Services Category *
               </Text>
-              <FormSelect name="subject" value={form.subject} onChange={handleChange}>
-                <option value="">Select a category…</option>
+                <FormSelect name="service" value={form.service} onChange={handleChange}>                <option value="">Select a category…</option>
                 <option value="nail_tech">Nail Technician</option>
                 <option value="plumber">Plumber</option>
                 <option value="hair_salon">Hair Salon</option>

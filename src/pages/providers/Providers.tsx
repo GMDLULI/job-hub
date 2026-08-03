@@ -28,6 +28,8 @@ import {
 } from "./styles/Provider.styles"
 import type { Provider, ProviderProps } from "./Providers.types"
 import JobView from "../jobs/Jobs"
+import { CATEGORIES } from "../../data/catagories"
+
 
 /* ─── category config ─────────────────────────────────────────
    bgImage comes directly from the JSON (category.img).
@@ -35,58 +37,17 @@ import JobView from "../jobs/Jobs"
    colour — no duplicate image URLs needed here.
 ──────────────────────────────────────────────────────────────── */
 
-interface CategoryMeta {
-  tagline: string
-  description: string
-  accent: string
-}
 
-const CATEGORY_META: Record<string, CategoryMeta> = {
-  "nail technicians": {
-    tagline: "✨ Premium Nail Care",
-    description:
-      "Our nail technicians are certified, creative, and passionate about giving you flawless nails. From gel manicures to intricate nail art, they bring salon-quality finishes right to your area.",
-    accent: "#F472B6",
-  },
-  "hair salons": {
-    tagline: "💇 Expert Hair Styling",
-    description:
-      "Transform your look with our talented hair stylists. Whether it's a fresh cut, colour treatment, or a full bridal style, our professionals deliver stunning results every time.",
-    accent: "#A78BFA",
-  },
-  plumbers: {
-    tagline: "🔧 Reliable Plumbing",
-    description:
-      "Fast, reliable, and fully equipped — our plumbers tackle everything from leaking taps to full pipe installations. Available for emergency call-outs across your area.",
-    accent: "#60A5FA",
-  },
-  electricians: {
-    tagline: "⚡ Certified Electricians",
-    description:
-      "Stay safe and powered up. Our certified electricians handle installations, fault-finding, and compliance certificates with speed and professionalism.",
-    accent: "#FBBF24",
-  },
-  construction: {
-    tagline: "🏗️ Construction Services",
-    description: "", // empty string → triggers the coming-soon state
-    accent: "#F97316",
-  },
-  tutors: {
-    tagline: "📚 Qualified Tutors",
-    description:
-      "From primary school to university level, our tutors are passionate educators who help students unlock their potential in any subject.",
-    accent: "#34D399",
-  },
-}
-
-const FALLBACK_META: CategoryMeta = {
-  tagline: "🌟 Professionals Near You",
-  description: "Discover talented local professionals ready to help with your needs.",
-  accent: "#C2410C",
-}
-
-function getMeta(categoryName: string): CategoryMeta {
-  return CATEGORY_META[categoryName.toLowerCase()] ?? FALLBACK_META
+function getMeta(categoryName: string) {
+  const match = CATEGORIES.find(
+    c => c.name.toLowerCase() === categoryName.toLowerCase()
+  )
+  return match ?? {
+    tagline: "🌟 Professionals Near You",
+    description: "Discover talented local professionals ready to help with your needs.",
+    accent: "#C2410C",
+    img: "",
+  }
 }
 
 /* ─── component ───────────────────────────────────────────── */
@@ -185,7 +146,7 @@ const ProviderView: React.FC<Props> = ({ category, goBack }) => {
                   <ProviderJobTitle $accent={meta.accent}>
                     {provider.title}
                   </ProviderJobTitle>
-                  <ProviderDesc>{provider.desc}</ProviderDesc>
+                  <ProviderDesc>{provider.about}</ProviderDesc>
                   <ProviderStars>{provider.stars}</ProviderStars>
                   {provider.badge && (
                     <ProviderBadge $accent={meta.accent}>

@@ -146,6 +146,9 @@ const handleSubmit = async () => {
         location: form.location,
         avatar_url: avatarUrl,
         category: form.service,
+        instagram: form.instagram,   // ← add these
+        twitter: form.twitter,
+        facebook: form.facebook,
       })
       .select()
       .single()

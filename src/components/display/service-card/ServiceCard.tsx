@@ -1,5 +1,4 @@
 import React from "react"
-import services from "../../../data/ServicesData.json"
 import type { ServiceCardProps } from "./ServiceCard.types"
 
 import {
@@ -32,7 +31,10 @@ const ServiceCard: React.FC<ServiceCardProps> = ({services, loading,  onSelectCa
           />
           <ServiceOverlay>
             <ServiceName>{service.name}</ServiceName>
-            <ServiceCount>{service.count} providers</ServiceCount>
+            <ServiceCount>
+              {service.count > 0 ? `${service.count} providers` : 'Coming soon'}
+            </ServiceCount>
+
           </ServiceOverlay>
         </StyledServiceCard>
       ))}
